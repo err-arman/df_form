@@ -2,952 +2,1190 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dhaka Flow - 7 Pillars of Wellbeing Self-Assessment</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f9f9f7;
-        }
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dhaka Flow - 7 Pillars of Wellbeing Self-Assessment</title>
+        <style>
+                body {
+                        font-family: 'Arial', sans-serif;
+                        line-height: 1.6;
+                        color: #333;
+                        max-width: 800px;
+                        margin: 0 auto;
+                        padding: 20px;
+                        background-color: #f9f9f7;
+                }
 
-        header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
+                header {
+                        text-align: center;
+                        margin-bottom: 30px;
+                }
 
-        .logo {
-            background-color: #4ECDC4;
-            /* Turquoise header background */
-            color: white;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-        }
+                .logo {
+                        background-color: #4ECDC4;
+                        /* Turquoise header background */
+                        color: white;
+                        padding: 20px;
+                        border-radius: 8px;
+                        margin-bottom: 20px;
+                }
 
-        h1 {
-            color: #30638E;
-            /* Deeper blue */
-            text-align: center;
-        }
+                h1 {
+                        color: #30638E;
+                        /* Deeper blue */
+                        text-align: center;
+                }
 
-        h2 {
-            color: #4ECDC4;
-            /* Turquoise */
-            border-bottom: 2px solid #4ECDC4;
-            padding-bottom: 5px;
-            margin-top: 30px;
-        }
+                h2 {
+                        color: #4ECDC4;
+                        /* Turquoise */
+                        border-bottom: 2px solid #4ECDC4;
+                        padding-bottom: 5px;
+                        margin-top: 30px;
+                }
 
-        .section {
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            border-left: 5px solid #4ECDC4;
-            /* Turquoise accent */
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
+                .section {
+                        background-color: white;
+                        padding: 20px;
+                        border-radius: 8px;
+                        margin-bottom: 20px;
+                        border-left: 5px solid #4ECDC4;
+                        /* Turquoise accent */
+                        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                }
 
-        .question {
-            margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #eaeaea;
-        }
+                .question {
+                        margin-bottom: 15px;
+                        padding-bottom: 10px;
+                        border-bottom: 1px solid #eaeaea;
+                }
 
-        .question:last-child {
-            border-bottom: none;
-        }
+                .question:last-child {
+                        border-bottom: none;
+                }
 
-        .options {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 8px;
-        }
+                .options {
+                        display: flex;
+                        flex-wrap: wrap;
+                        /* Allow wrapping for smaller screens */
+                        gap: 50px;
+                        /* Add spacing between labels */
+                }
 
-        .options label {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 60px;
-        }
+                .options label {
+                        display: flex;
+                        align-items: center;
+                        /* Align radio buttons and text vertically */
+                        gap: 10px;
+                        /* Add spacing between the radio button and text */
+                        /* flex: 1 1 calc(33.33% - 10px); */
+                        /* Adjust width for three items per row */
+                        max-width: 200px;
+                        /* Optional: Limit the width of each label */
+                        white-space: nowrap;
+                        /* Prevent text from wrapping */
+                }
 
-        input[type="radio"] {
-            margin-bottom: 5px;
-        }
+                @media (max-width: 768px) {
+                        .options label {
+                                flex: 1 1 calc(50% - 10px);
+                                /* Two items per row on smaller screens */
+                        }
+                }
 
-        .score-section {
-            background-color: #EDF6F9;
-            /* Very light blue */
-            padding: 15px;
-            border-radius: 5px;
-            margin-top: 15px;
-            font-weight: bold;
-        }
+                @media (max-width: 480px) {
+                        .options label {
+                                flex: 1 1 100%;
+                                /* One item per row on very small screens */
+                        }
+                }
 
-        .reflection {
-            background-color: #F0F9E8;
-            /* Light seafoam green */
-            padding: 20px;
-            border-radius: 8px;
-            margin: 20px 0;
-        }
+                input[type="radio"] {
+                        margin-bottom: 0px;
+                }
 
-        textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            margin-top: 8px;
-            resize: vertical;
-        }
+                .score-section {
+                        background-color: #EDF6F9;
+                        /* Very light blue */
+                        padding: 15px;
+                        border-radius: 5px;
+                        margin-top: 15px;
+                        font-weight: bold;
+                }
 
-        input[type="text"],
-        input[type="number"] {
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            width: 60px;
-            text-align: center;
-        }
+                .reflection {
+                        background-color: #F0F9E8;
+                        /* Light seafoam green */
+                        padding: 20px;
+                        border-radius: 8px;
+                        margin: 20px 0;
+                }
 
-        button {
-            background-color: #4ECDC4;
-            /* Turquoise */
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            margin-top: 20px;
-        }
+                textarea {
+                        width: 100%;
+                        padding: 10px;
+                        border: 1px solid #ddd;
+                        border-radius: 5px;
+                        margin-top: 8px;
+                        resize: vertical;
+                }
 
-        button:hover {
-            background-color: #30638E;
-            /* Deeper blue */
-        }
+                input[type="text"],
+                input[type="number"] {
+                        padding: 8px;
+                        border: 1px solid #ddd;
+                        border-radius: 5px;
+                        width: 60px;
+                        text-align: center;
+                }
 
-        .hidden {
-            display: none;
-        }
+                button {
+                        background-color: #4ECDC4;
+                        /* Turquoise */
+                        color: white;
+                        border: none;
+                        padding: 12px 24px;
+                        border-radius: 5px;
+                        cursor: pointer;
+                        font-size: 16px;
+                        margin-top: 20px;
+                }
 
-        .recommendation {
-            background-color: #4ECDC4;
-            /* Turquoise */
-            color: white;
-            padding: 20px;
-            border-radius: 8px;
-            margin-top: 30px;
-            text-align: center;
-        }
+                button:hover {
+                        background-color: #30638E;
+                        /* Deeper blue */
+                }
 
-        .confirmation {
-            background-color: #F7E3AF;
-            /* Sand beige */
-            padding: 20px;
-            border-radius: 8px;
-            margin-top: 30px;
-            text-align: center;
-        }
+                .hidden {
+                        display: none;
+                }
 
-        .knowledge-access {
-            font-style: italic;
-            color: #777;
-        }
+                .recommendation {
+                        background-color: #4ECDC4;
+                        /* Turquoise */
+                        color: white;
+                        padding: 20px;
+                        border-radius: 8px;
+                        margin-top: 30px;
+                        text-align: center;
+                }
 
-        footer {
-            text-align: center;
-            margin-top: 40px;
-            color: #777;
-            font-size: 14px;
-        }
-    </style>
+                .confirmation {
+                        background-color: #F7E3AF;
+                        /* Sand beige */
+                        padding: 20px;
+                        border-radius: 8px;
+                        margin-top: 30px;
+                        text-align: center;
+                }
+
+                .knowledge-access {
+                        font-style: italic;
+                        color: #777;
+                }
+
+                footer {
+                        text-align: center;
+                        margin-top: 40px;
+                        color: #777;
+                        font-size: 14px;
+                }
+
+
+                @media (max-width: 768px) {
+                        body {
+                                padding: 10px;
+                        }
+
+                        .options label {
+                                flex: 1 1 100%;
+                                /* Make labels full width on smaller screens */
+                        }
+
+                        h1,
+                        h2 {
+                                font-size: 1.5rem;
+                                /* Adjust heading sizes */
+                        }
+
+                        button {
+                                width: 100%;
+                                /* Make buttons full width */
+                                font-size: 14px;
+                                /* Adjust font size */
+                        }
+
+                        .score-section {
+                                font-size: 14px;
+                                /* Adjust font size for smaller screens */
+                        }
+                }
+
+                @media (max-width: 480px) {
+
+                        h1,
+                        h2 {
+                                font-size: 1.2rem;
+                                /* Further reduce heading sizes */
+                        }
+
+                        .options {
+                                gap: 5px;
+                                /* Reduce spacing between labels */
+                        }
+
+                        button {
+                                padding: 10px;
+                                /* Adjust button padding */
+                        }
+                }
+        </style>
 </head>
 
 <body>
-    <header>
-        <div class="logo">
-            <h1>DHAKA FLOW</h1>
+        <header>
+                <div class="logo">
+                        <h1>DHAKA FLOW</h1>
+                </div>
+                <h1>7 Pillars of Wellbeing: Self-Assessment</h1>
+                <p>Rate each statement on a scale from <strong>1 (Never)</strong> to <strong>5 (Always)</strong> unless
+                        otherwise indicated.</p>
+        </header>
+
+        <form id="wellnessForm">
+                <!-- 1. MOVEMENT SECTION -->
+                <div class="section" id="movementSection">
+                        <h2>1. Movement</h2>
+
+                        <div class="question">
+                                <p>I engage in physical movement (e.g., walking, yoga, dancing, workouts) at least 3-5
+                                        times a week.</p>
+                                <div class="options">
+                                        <label><input type="radio" name="movement1" value="1" required
+                                                        onchange="updateSectionScore('movementSection', 'movementScore')">1
+                                                Never</label>
+                                        <label><input type="radio" name="movement1" value="2" required
+                                                        onchange="updateSectionScore('movementSection', 'movementScore')">2
+                                                Rarely</label>
+                                        <label><input type="radio" name="movement1" value="3"
+                                                        onchange="updateSectionScore('movementSection', 'movementScore')">3
+                                                Sometimes</label>
+                                        <label><input type="radio" name="movement1" value="4"
+                                                        onchange="updateSectionScore('movementSection', 'movementScore')">4
+                                                Often</label>
+                                        <label><input type="radio" name="movement1" value="5"
+                                                        onchange="updateSectionScore('movementSection', 'movementScore')">5
+                                                Always</label>
+                                </div>
+                        </div>
+
+                        <div class="question">
+                                <p>I enjoy the physical activities I choose to do.</p>
+                                <div class="options">
+                                        <label><input type="radio" name="movement2" value="1" required
+                                                        onchange="updateSectionScore('movementSection', 'movementScore')">1
+                                                Never</label>
+                                        <label><input type="radio" name="movement2" value="2"
+                                                        onchange="updateSectionScore('movementSection', 'movementScore')">2
+                                                Rarely</label>
+                                        <label><input type="radio" name="movement2" value="3"
+                                                        onchange="updateSectionScore('movementSection', 'movementScore')">3
+                                                Sometimes</label>
+                                        <label><input type="radio" name="movement2" value="4"
+                                                        onchange="updateSectionScore('movementSection', 'movementScore')">4
+                                                Often</label>
+                                        <label><input type="radio" name="movement2" value="5"
+                                                        onchange="updateSectionScore('movementSection', 'movementScore')">5
+                                                Always</label>
+                                </div>
+                        </div>
+
+                        <div class="question">
+                                <p>I feel strong, flexible, and energized.</p>
+                                <div class="options">
+                                        <label><input type="radio" name="movement3" value="1" required
+                                                        onchange="updateSectionScore('movementSection', 'movementScore')">1
+                                                Never</label>
+                                        <label><input type="radio" name="movement3" value="2"
+                                                        onchange="updateSectionScore('movementSection', 'movementScore')">2
+                                                Rarely</label>
+                                        <label><input type="radio" name="movement3" value="3"
+                                                        onchange="updateSectionScore('movementSection', 'movementScore')">3
+                                                Sometimes</label>
+                                        <label><input type="radio" name="movement3" value="4"
+                                                        onchange="updateSectionScore('movementSection', 'movementScore')">4
+                                                Often</label>
+                                        <label><input type="radio" name="movement3" value="5"
+                                                        onchange="updateSectionScore('movementSection', 'movementScore')">5
+                                                Always</label>
+                                </div>
+                        </div>
+
+                        <div class="question">
+                                <p>I know how to stretch or strengthen specific muscles in my body when I feel pain or
+                                        tightness. <span class="knowledge-access">(Knowledge)</span></p>
+                                <div class="options">
+                                        <label><input type="radio" name="movement4" value="1" required
+                                                        onchange="updateSectionScore('movementSection', 'movementScore')">1
+                                                Never</label>
+                                        <label><input type="radio" name="movement4" value="2"
+                                                        onchange="updateSectionScore('movementSection', 'movementScore')">2
+                                                Rarely</label>
+                                        <label><input type="radio" name="movement4" value="3"
+                                                        onchange="updateSectionScore('movementSection', 'movementScore')">3
+                                                Sometimes</label>
+                                        <label><input type="radio" name="movement4" value="4"
+                                                        onchange="updateSectionScore('movementSection', 'movementScore')">4
+                                                Often</label>
+                                        <label><input type="radio" name="movement4" value="5"
+                                                        onchange="updateSectionScore('movementSection', 'movementScore')">5
+                                                Always</label>
+                                </div>
+                        </div>
+
+                        <div class="question">
+                                <p>I have access to a safe and affordable space to move or exercise (e.g., gym, park,
+                                        studio, home).
+                                        <span class="knowledge-access">(Access)</span>
+                                </p>
+                                <div class="options">
+                                        <label><input type="radio" name="movement5" value="1" required
+                                                        onchange="updateSectionScore('movementSection', 'movementScore')">1
+                                                Never</label>
+                                        <label><input type="radio" name="movement5" value="2"
+                                                        onchange="updateSectionScore('movementSection', 'movementScore')">2
+                                                Rarely</label>
+                                        <label><input type="radio" name="movement5" value="3"
+                                                        onchange="updateSectionScore('movementSection', 'movementScore')">3
+                                                Sometimes</label>
+                                        <label><input type="radio" name="movement5" value="4"
+                                                        onchange="updateSectionScore('movementSection', 'movementScore')">4
+                                                Often</label>
+                                        <label><input type="radio" name="movement5" value="5"
+                                                        onchange="updateSectionScore('movementSection', 'movementScore')">5
+                                                Always</label>
+                                </div>
+                        </div>
+
+                        <div class="score-section">
+                                <label for="movementScore">Your Movement Score: </label>
+                                <input type="number" id="movementScore" readonly> / 25
+                        </div>
+                </div>
+
+                <!-- 2. MEDITATION SECTION -->
+                <div class="section" id="meditationSection">
+                        <h2>2. Meditation</h2>
+
+                        <div class="question">
+                                <p>I practice meditation, mindfulness, or breathwork at least once a week.</p>
+                                <div class="options">
+                                        <label><input type="radio" name="meditation1" value="1" required
+                                                        onchange="updateSectionScore('meditationSection', 'meditationScore')">1
+                                                Never</label>
+                                        <label><input type="radio" name="meditation1" value="2"
+                                                        onchange="updateSectionScore('meditationSection', 'meditationScore')">2
+                                                Rarely</label>
+                                        <label><input type="radio" name="meditation1" value="3"
+                                                        onchange="updateSectionScore('meditationSection', 'meditationScore')">3
+                                                Sometimes</label>
+                                        <label><input type="radio" name="meditation1" value="4"
+                                                        onchange="updateSectionScore('meditationSection', 'meditationScore')">4
+                                                Often</label>
+                                        <label><input type="radio" name="meditation1" value="5"
+                                                        onchange="updateSectionScore('meditationSection', 'meditationScore')">5
+                                                Always</label>
+                                </div>
+                        </div>
+
+                        <div class="question">
+                                <p>I feel more focused and calm after these practices.</p>
+                                <div class="options">
+                                        <label><input type="radio" name="meditation2" value="1"
+                                                        onchange="updateSectionScore('meditationSection', 'meditationScore')"
+                                                        required>1 Never</label>
+                                        <label><input type="radio" name="meditation2" value="2"
+                                                        onchange="updateSectionScore('meditationSection', 'meditationScore')">2
+                                                Rarely</label>
+                                        <label><input type="radio" name="meditation2" value="3"
+                                                        onchange="updateSectionScore('meditationSection', 'meditationScore')">3
+                                                Sometimes</label>
+                                        <label><input type="radio" name="meditation2" value="4"
+                                                        onchange="updateSectionScore('meditationSection', 'meditationScore')">4
+                                                Often</label>
+                                        <label><input type="radio" name="meditation2" value="5"
+                                                        onchange="updateSectionScore('meditationSection', 'meditationScore')">5
+                                                Always</label>
+                                </div>
+                        </div>
+
+                        <div class="question">
+                                <p>I know how to meditate or use breath to relax when I feel overwhelmed. <span
+                                                class="knowledge-access">(Knowledge)</span></p>
+                                <div class="options">
+                                        <label><input type="radio" name="meditation3" value="1"
+                                                        onchange="updateSectionScore('meditationSection', 'meditationScore')"
+                                                        required>1 Never</label>
+                                        <label><input type="radio" name="meditation3" value="2"
+                                                        onchange="updateSectionScore('meditationSection', 'meditationScore')">2
+                                                Rarely</label>
+                                        <label><input type="radio" name="meditation3" value="3"
+                                                        onchange="updateSectionScore('meditationSection', 'meditationScore')">3
+                                                Sometimes</label>
+                                        <label><input type="radio" name="meditation3" value="4"
+                                                        onchange="updateSectionScore('meditationSection', 'meditationScore')">4
+                                                Often</label>
+                                        <label><input type="radio" name="meditation3" value="5"
+                                                        onchange="updateSectionScore('meditationSection', 'meditationScore')">5
+                                                Always</label>
+                                </div>
+                        </div>
+
+                        <div class="question">
+                                <p>I have time and a quiet space to meditate or reflect regularly. <span
+                                                class="knowledge-access">(Access)</span></p>
+                                <div class="options">
+                                        <label><input type="radio" name="meditation4" value="1"
+                                                        onchange="updateSectionScore('meditationSection', 'meditationScore')"
+                                                        required>1 Never</label>
+                                        <label><input type="radio" name="meditation4" value="2"
+                                                        onchange="updateSectionScore('meditationSection', 'meditationScore')">2
+                                                Rarely</label>
+                                        <label><input type="radio" name="meditation4" value="3"
+                                                        onchange="updateSectionScore('meditationSection', 'meditationScore')">3
+                                                Sometimes</label>
+                                        <label><input type="radio" name="meditation4" value="4"
+                                                        onchange="updateSectionScore('meditationSection', 'meditationScore')">4
+                                                Often</label>
+                                        <label><input type="radio" name="meditation4" value="5"
+                                                        onchange="updateSectionScore('meditationSection', 'meditationScore')">5
+                                                Always</label>
+                                </div>
+                        </div>
+
+                        <div class="score-section">
+                                <label for="meditationScore">Your Meditation Score: </label>
+                                <input type="number" id="meditationScore" readonly> / 20
+                        </div>
+                        <!-- <button type="button" onclick="calculateSectionScore('meditationSection', 'meditationScore')">Submit Movement</button> -->
+                </div>
+
+                <!-- 3. NUTRITION SECTION -->
+                <div class="section" id="nutritionSection">
+                        <h2>3. Nutrition</h2>
+
+                        <div class="question">
+                                <p>I eat a balanced diet that supports my energy and well-being.</p>
+                                <div class="options">
+                                        <label><input type="radio" name="nutrition1" value="1" required
+                                                        onchange="updateSectionScore('nutritionSection', 'nutritionScore')">1
+                                                Never</label>
+                                        <label><input type="radio" name="nutrition1" value="2"
+                                                        onchange="updateSectionScore('nutritionSection', 'nutritionScore')">2
+                                                Rarely</label>
+                                        <label><input type="radio" name="nutrition1" value="3"
+                                                        onchange="updateSectionScore('nutritionSection', 'nutritionScore')">3
+                                                Sometimes</label>
+                                        <label><input type="radio" name="nutrition1" value="4"
+                                                        onchange="updateSectionScore('nutritionSection', 'nutritionScore')">4
+                                                Often</label>
+                                        <label><input type="radio" name="nutrition1" value="5"
+                                                        onchange="updateSectionScore('nutritionSection', 'nutritionScore')">5
+                                                Always</label>
+                                </div>
+                        </div>
+
+                        <div class="question">
+                                <p>I hydrate throughout the day.</p>
+                                <div class="options">
+                                        <label><input type="radio" name="nutrition2" value="1"
+                                                        onchange="updateSectionScore('nutritionSection', 'nutritionScore')"
+                                                        required>1 Never</label>
+                                        <label><input type="radio" name="nutrition2" value="2"
+                                                        onchange="updateSectionScore('nutritionSection', 'nutritionScore')">2
+                                                Rarely</label>
+                                        <label><input type="radio" name="nutrition2" value="3"
+                                                        onchange="updateSectionScore('nutritionSection', 'nutritionScore')">3
+                                                Sometimes</label>
+                                        <label><input type="radio" name="nutrition2" value="4"
+                                                        onchange="updateSectionScore('nutritionSection', 'nutritionScore')">4
+                                                Often</label>
+                                        <label><input type="radio" name="nutrition2" value="5"
+                                                        onchange="updateSectionScore('nutritionSection', 'nutritionScore')">5
+                                                Always</label>
+                                </div>
+                        </div>
+
+                        <div class="question">
+                                <p>I limit processed food and excess sugar.</p>
+                                <div class="options">
+                                        <label><input type="radio" name="nutrition3" value="1"
+                                                        onchange="updateSectionScore('nutritionSection', 'nutritionScore')"
+                                                        required>1 Never</label>
+                                        <label><input type="radio" name="nutrition3" value="2"
+                                                        onchange="updateSectionScore('nutritionSection', 'nutritionScore')">2
+                                                Rarely</label>
+                                        <label><input type="radio" name="nutrition3" value="3"
+                                                        onchange="updateSectionScore('nutritionSection', 'nutritionScore')">3
+                                                Sometimes</label>
+                                        <label><input type="radio" name="nutrition3" value="4"
+                                                        onchange="updateSectionScore('nutritionSection', 'nutritionScore')">4
+                                                Often</label>
+                                        <label><input type="radio" name="nutrition3" value="5"
+                                                        onchange="updateSectionScore('nutritionSection', 'nutritionScore')">5
+                                                Always</label>
+                                </div>
+                        </div>
+
+                        <div class="question">
+                                <p>Do you smoke?</p>
+                                <div class="options">
+                                        <label><input type="radio" name="nutrition4" required>5 Half
+                                                pack+</label>
+                                        <label><input type="radio" name="nutrition4">3 Socially</label>
+                                        <label><input type="radio" name="nutrition4">0 No</label>
+                                </div>
+                        </div>
+
+                        <div class="question">
+                                <p>Do you drink alcohol?</p>
+                                <div class="options">
+                                        <label><input type="radio" name="nutrition5" required>5 Almost
+                                                daily</label>
+                                        <label><input type="radio" name="nutrition5">3 Weekly</label>
+                                        <label><input type="radio" name="nutrition5">0 No</label>
+                                </div>
+                        </div>
+
+                        <div class="question">
+                                <p>I understand my personal protein needs and how to meet them through my diet. <span
+                                                class="knowledge-access">(Knowledge)</span></p>
+                                <div class="options">
+                                        <label><input type="radio" name="nutrition6" value="1"
+                                                        onchange="updateSectionScore('nutritionSection', 'nutritionScore')"
+                                                        required>1 Never</label>
+                                        <label><input type="radio" name="nutrition6" value="2"
+                                                        onchange="updateSectionScore('nutritionSection', 'nutritionScore')">2
+                                                Rarely</label>
+                                        <label><input type="radio" name="nutrition6" value="3"
+                                                        onchange="updateSectionScore('nutritionSection', 'nutritionScore')">3
+                                                Sometimes</label>
+                                        <label><input type="radio" name="nutrition6" value="4"
+                                                        onchange="updateSectionScore('nutritionSection', 'nutritionScore')">4
+                                                Often</label>
+                                        <label><input type="radio" name="nutrition6" value="5"
+                                                        onchange="updateSectionScore('nutritionSection', 'nutritionScore')">5
+                                                Always</label>
+                                </div>
+                        </div>
+
+                        <div class="question">
+                                <p>I know how to prepare healthy meals that nourish me. <span
+                                                class="knowledge-access">(Knowledge/Practice)</span></p>
+                                <div class="options">
+                                        <label><input type="radio" name="nutrition7" value="1"
+                                                        onchange="updateSectionScore('nutritionSection', 'nutritionScore')"
+                                                        required>1 Never</label>
+                                        <label><input type="radio" name="nutrition7" value="2"
+                                                        onchange="updateSectionScore('nutritionSection', 'nutritionScore')">2
+                                                Rarely</label>
+                                        <label><input type="radio" name="nutrition7" value="3"
+                                                        onchange="updateSectionScore('nutritionSection', 'nutritionScore')">3
+                                                Sometimes</label>
+                                        <label><input type="radio" name="nutrition7" value="4"
+                                                        onchange="updateSectionScore('nutritionSection', 'nutritionScore')">4
+                                                Often</label>
+                                        <label><input type="radio" name="nutrition7" value="5"
+                                                        onchange="updateSectionScore('nutritionSection', 'nutritionScore')">5
+                                                Always</label>
+                                </div>
+                        </div>
+
+                        <div class="question">
+                                <p>I have access to affordable, healthy food options. <span
+                                                class="knowledge-access">(Access)</span></p>
+                                <div class="options">
+                                        <label><input type="radio" name="nutrition8" value="1"
+                                                        onchange="updateSectionScore('nutritionSection', 'nutritionScore')"
+                                                        required>1 Never</label>
+                                        <label><input type="radio" name="nutrition8" value="2"
+                                                        onchange="updateSectionScore('nutritionSection', 'nutritionScore')">2
+                                                Rarely</label>
+                                        <label><input type="radio" name="nutrition8" value="3"
+                                                        onchange="updateSectionScore('nutritionSection', 'nutritionScore')">3
+                                                Sometimes</label>
+                                        <label><input type="radio" name="nutrition8" value="4"
+                                                        onchange="updateSectionScore('nutritionSection', 'nutritionScore')">4
+                                                Often</label>
+                                        <label><input type="radio" name="nutrition8" value="5"
+                                                        onchange="updateSectionScore('nutritionSection', 'nutritionScore')">5
+                                                Always</label>
+                                </div>
+                        </div>
+
+                        <div class="score-section">
+                                <label for="nutritionScore">Your Nutrition Score (excluding smoking/drinking): </label>
+                                <input type="number" id="nutritionScore" readonly> / 30
+                        </div>
+                </div>
+
+                <!-- 4. MENTAL WELLNESS SECTION -->
+                <div class="section" id="mentalWellnessSection">
+                        <h2>4. Mental Wellness</h2>
+
+                        <div class="question">
+                                <p>I can manage stress in healthy ways.</p>
+                                <div class="options">
+                                        <label><input type="radio" name="mental1" value="1" required
+                                                        onChange="updateSectionScore('mentalWellnessSection', 'mentalScore')">1
+                                                Never</label>
+                                        <label><input type="radio" name="mental1" value="2"
+                                                        onChange="updateSectionScore('mentalWellnessSection', 'mentalScore')">2
+                                                Rarely</label>
+                                        <label><input type="radio" name="mental1" value="3"
+                                                        onChange="updateSectionScore('mentalWellnessSection', 'mentalScore')">3
+                                                Sometimes</label>
+                                        <label><input type="radio" name="mental1" value="4"
+                                                        onChange="updateSectionScore('mentalWellnessSection', 'mentalScore')">4
+                                                Often</label>
+                                        <label><input type="radio" name="mental1" value="5"
+                                                        onChange="updateSectionScore('mentalWellnessSection', 'mentalScore')">5
+                                                Always</label>
+                                </div>
+                        </div>
+
+                        <div class="question">
+                                <p>My relationships feel emotionally supportive.</p>
+                                <div class="options">
+                                        <label><input type="radio" name="mental2" value="1"
+                                                        onChange="updateSectionScore('mentalWellnessSection', 'mentalScore')"
+                                                        required>1 Never</label>
+                                        <label><input type="radio" name="mental2" value="2"
+                                                        onChange="updateSectionScore('mentalWellnessSection', 'mentalScore')">2
+                                                Rarely</label>
+                                        <label><input type="radio" name="mental2" value="3"
+                                                        onChange="updateSectionScore('mentalWellnessSection', 'mentalScore')">3
+                                                Sometimes</label>
+                                        <label><input type="radio" name="mental2" value="4"
+                                                        onChange="updateSectionScore('mentalWellnessSection', 'mentalScore')">4
+                                                Often</label>
+                                        <label><input type="radio" name="mental2" value="5"
+                                                        onChange="updateSectionScore('mentalWellnessSection', 'mentalScore')">5
+                                                Always</label>
+                                </div>
+                        </div>
+
+                        <div class="question">
+                                <p>My work or study environment is not toxic.</p>
+                                <div class="options">
+                                        <label><input type="radio" name="mental3" value="1"
+                                                        onChange="updateSectionScore('mentalWellnessSection', 'mentalScore')"
+                                                        required>1 Never</label>
+                                        <label><input type="radio" name="mental3" value="2"
+                                                        onChange="updateSectionScore('mentalWellnessSection', 'mentalScore')">2
+                                                Rarely</label>
+                                        <label><input type="radio" name="mental3" value="3"
+                                                        onChange="updateSectionScore('mentalWellnessSection', 'mentalScore')">3
+                                                Sometimes</label>
+                                        <label><input type="radio" name="mental3" value="4"
+                                                        onChange="updateSectionScore('mentalWellnessSection', 'mentalScore')">4
+                                                Often</label>
+                                        <label><input type="radio" name="mental3" value="5"
+                                                        onChange="updateSectionScore('mentalWellnessSection', 'mentalScore')">5
+                                                Always</label>
+                                </div>
+                        </div>
+
+                        <div class="question">
+                                <p>I am not often overwhelmed by depression or anxiety.</p>
+                                <div class="options">
+                                        <label><input type="radio" name="mental4" value="1"
+                                                        onChange="updateSectionScore('mentalWellnessSection', 'mentalScore')"
+                                                        required>1 Never</label>
+                                        <label><input type="radio" name="mental4" value="2"
+                                                        onChange="updateSectionScore('mentalWellnessSection', 'mentalScore')">2
+                                                Rarely</label>
+                                        <label><input type="radio" name="mental4" value="3"
+                                                        onChange="updateSectionScore('mentalWellnessSection', 'mentalScore')">3
+                                                Sometimes</label>
+                                        <label><input type="radio" name="mental4" value="4"
+                                                        onChange="updateSectionScore('mentalWellnessSection', 'mentalScore')">4
+                                                Often</label>
+                                        <label><input type="radio" name="mental4" value="5"
+                                                        onChange="updateSectionScore('mentalWellnessSection', 'mentalScore')">5
+                                                Always</label>
+                                </div>
+                        </div>
+
+                        <div class="question">
+                                <p>I feel hopeful and motivated.</p>
+                                <div class="options">
+                                        <label><input type="radio" name="mental5" value="1"
+                                                        onChange="updateSectionScore('mentalWellnessSection', 'mentalScore')"
+                                                        required>1 Never</label>
+                                        <label><input type="radio" name="mental5" value="2"
+                                                        onChange="updateSectionScore('mentalWellnessSection', 'mentalScore')">2
+                                                Rarely</label>
+                                        <label><input type="radio" name="mental5" value="3"
+                                                        onChange="updateSectionScore('mentalWellnessSection', 'mentalScore')">3
+                                                Sometimes</label>
+                                        <label><input type="radio" name="mental5" value="4"
+                                                        onChange="updateSectionScore('mentalWellnessSection', 'mentalScore')">4
+                                                Often</label>
+                                        <label><input type="radio" name="mental5" value="5"
+                                                        onChange="updateSectionScore('mentalWellnessSection', 'mentalScore')">5
+                                                Always</label>
+                                </div>
+                        </div>
+
+                        <div class="question">
+                                <p>I know who to reach out to for mental health support if needed. <span
+                                                class="knowledge-access">(Knowledge/Access)</span></p>
+                                <div class="options">
+                                        <label><input type="radio" name="mental6" value="1"
+                                                        onChange="updateSectionScore('mentalWellnessSection', 'mentalScore')"
+                                                        required>1 Never</label>
+                                        <label><input type="radio" name="mental6" value="2"
+                                                        onChange="updateSectionScore('mentalWellnessSection', 'mentalScore')">2
+                                                Rarely</label>
+                                        <label><input type="radio" name="mental6" value="3"
+                                                        onChange="updateSectionScore('mentalWellnessSection', 'mentalScore')">3
+                                                Sometimes</label>
+                                        <label><input type="radio" name="mental6" value="4"
+                                                        onChange="updateSectionScore('mentalWellnessSection', 'mentalScore')">4
+                                                Often</label>
+                                        <label><input type="radio" name="mental6" value="5"
+                                                        onChange="updateSectionScore('mentalWellnessSection', 'mentalScore')">5
+                                                Always</label>
+                                </div>
+                        </div>
+
+                        <div class="score-section">
+                                <label for="mentalScore">Your Mental Wellness Score: </label>
+                                <input type="number" id="mentalScore" readonly> / 30
+                        </div>
+                </div>
+
+                <!-- 5. RELAXATION SECTION -->
+                <div class="section" id="relaxationSection">
+                        <h2>5. Relaxation</h2>
+
+                        <div class="question">
+                                <p>I get enough restful sleep (7-9 hours per night).</p>
+                                <div class="options">
+                                        <label><input type="radio" name="relaxation1" value="1" required
+                                                        onchange="updateSectionScore('relaxationSection', 'relaxationScore')">1
+                                                Never</label>
+                                        <label><input type="radio" name="relaxation1" value="2"
+                                                        onchange="updateSectionScore('relaxationSection', 'relaxationScore')">2
+                                                Rarely</label>
+                                        <label><input type="radio" name="relaxation1" value="3"
+                                                        onchange="updateSectionScore('relaxationSection', 'relaxationScore')">3
+                                                Sometimes</label>
+                                        <label><input type="radio" name="relaxation1" value="4"
+                                                        onchange="updateSectionScore('relaxationSection', 'relaxationScore')">4
+                                                Often</label>
+                                        <label><input type="radio" name="relaxation1" value="5"
+                                                        onchange="updateSectionScore('relaxationSection', 'relaxationScore')">5
+                                                Always</label>
+                                </div>
+                        </div>
+
+                        <div class="question">
+                                <p>I make time for rest, hobbies, or joy.</p>
+                                <div class="options">
+                                        <label><input type="radio" name="relaxation2" value="1"
+                                                        onchange="updateSectionScore('relaxationSection', 'relaxationScore')"
+                                                        required>1 Never</label>
+                                        <label><input type="radio" name="relaxation2" value="2"
+                                                        onchange="updateSectionScore('relaxationSection', 'relaxationScore')">2
+                                                Rarely</label>
+                                        <label><input type="radio" name="relaxation2" value="3"
+                                                        onchange="updateSectionScore('relaxationSection', 'relaxationScore')">3
+                                                Sometimes</label>
+                                        <label><input type="radio" name="relaxation2" value="4"
+                                                        onchange="updateSectionScore('relaxationSection', 'relaxationScore')">4
+                                                Often</label>
+                                        <label><input type="radio" name="relaxation2" value="5"
+                                                        onchange="updateSectionScore('relaxationSection', 'relaxationScore')">5
+                                                Always</label>
+                                </div>
+                        </div>
+
+                        <div class="question">
+                                <p>I unplug from screens to recharge.</p>
+                                <div class="options">
+                                        <label><input type="radio" name="relaxation3" value="1"
+                                                        onchange="updateSectionScore('relaxationSection', 'relaxationScore')"
+                                                        required>1 Never</label>
+                                        <label><input type="radio" name="relaxation3" value="2"
+                                                        onchange="updateSectionScore('relaxationSection', 'relaxationScore')">2
+                                                Rarely</label>
+                                        <label><input type="radio" name="relaxation3" value="3"
+                                                        onchange="updateSectionScore('relaxationSection', 'relaxationScore')">3
+                                                Sometimes</label>
+                                        <label><input type="radio" name="relaxation3" value="4"
+                                                        onchange="updateSectionScore('relaxationSection', 'relaxationScore')">4
+                                                Often</label>
+                                        <label><input type="radio" name="relaxation3" value="5"
+                                                        onchange="updateSectionScore('relaxationSection', 'relaxationScore')">5
+                                                Always</label>
+                                </div>
+                        </div>
+
+                        <div class="question">
+                                <p>I know what helps me personally unwind and relax. <span
+                                                class="knowledge-access">(Knowledge)</span>
+                                </p>
+                                <div class="options">
+                                        <label><input type="radio" name="relaxation4" value="1"
+                                                        onchange="updateSectionScore('relaxationSection', 'relaxationScore')"
+                                                        required>1 Never</label>
+                                        <label><input type="radio" name="relaxation4" value="2"
+                                                        onchange="updateSectionScore('relaxationSection', 'relaxationScore')">2
+                                                Rarely</label>
+                                        <label><input type="radio" name="relaxation4" value="3"
+                                                        onchange="updateSectionScore('relaxationSection', 'relaxationScore')">3
+                                                Sometimes</label>
+                                        <label><input type="radio" name="relaxation4" value="4"
+                                                        onchange="updateSectionScore('relaxationSection', 'relaxationScore')">4
+                                                Often</label>
+                                        <label><input type="radio" name="relaxation4" value="5"
+                                                        onchange="updateSectionScore('relaxationSection', 'relaxationScore')">5
+                                                Always</label>
+                                </div>
+                        </div>
+
+                        <div class="question">
+                                <p>I have the time and space in my life for rest. <span
+                                                class="knowledge-access">(Access)</span></p>
+                                <div class="options">
+                                        <label><input type="radio" name="relaxation5" value="1"
+                                                        onchange="updateSectionScore('relaxationSection', 'relaxationScore')"
+                                                        required>1 Never</label>
+                                        <label><input type="radio" name="relaxation5" value="2"
+                                                        onchange="updateSectionScore('relaxationSection', 'relaxationScore')">2
+                                                Rarely</label>
+                                        <label><input type="radio" name="relaxation5" value="3"
+                                                        onchange="updateSectionScore('relaxationSection', 'relaxationScore')">3
+                                                Sometimes</label>
+                                        <label><input type="radio" name="relaxation5" value="4"
+                                                        onchange="updateSectionScore('relaxationSection', 'relaxationScore')">4
+                                                Often</label>
+                                        <label><input type="radio" name="relaxation5" value="5"
+                                                        onchange="updateSectionScore('relaxationSection', 'relaxationScore')">5
+                                                Always</label>
+                                </div>
+                        </div>
+
+                        <div class="question">
+                                <p>How many hours do you typically sleep per night?</p>
+                                <input type="number" name="sleepHours" min="1" max="12" required>
+                        </div>
+
+                        <div class="score-section">
+                                <label for="relaxationScore">Your Relaxation Score (excluding sleep hours): </label>
+                                <input type="number" id="relaxationScore" readonly> / 25
+                        </div>
+                </div>
+
+                <!-- 6. CONNECTION SECTION -->
+                <div class="section" id="connectionSection">
+                        <h2>6. Connection</h2>
+
+                        <div class="question">
+                                <p>I feel a sense of belonging in my community.</p>
+                                <div class="options">
+                                        <label><input type="radio" name="connection1" value="1" required
+                                                        onchange="updateSectionScore('connectionSection', 'connectionScore')">1
+                                                Never</label>
+                                        <label><input type="radio" name="connection1" value="2"
+                                                        onchange="updateSectionScore('connectionSection', 'connectionScore')">2
+                                                Rarely</label>
+                                        <label><input type="radio" name="connection1" value="3"
+                                                        onchange="updateSectionScore('connectionSection', 'connectionScore')">3
+                                                Sometimes</label>
+                                        <label><input type="radio" name="connection1" value="4"
+                                                        onchange="updateSectionScore('connectionSection', 'connectionScore')">4
+                                                Often</label>
+                                        <label><input type="radio" name="connection1" value="5"
+                                                        onchange="updateSectionScore('connectionSection', 'connectionScore')">5
+                                                Always</label>
+                                </div>
+                        </div>
+
+                        <div class="question">
+                                <p>I have someone I can speak to openly.</p>
+                                <div class="options">
+                                        <label><input type="radio" name="connection2" value="1"
+                                                        onchange="updateSectionScore('connectionSection', 'connectionScore')"
+                                                        required>1 Never</label>
+                                        <label><input type="radio" name="connection2" value="2"
+                                                        onchange="updateSectionScore('connectionSection', 'connectionScore')">2
+                                                Rarely</label>
+                                        <label><input type="radio" name="connection2" value="3"
+                                                        onchange="updateSectionScore('connectionSection', 'connectionScore')">3
+                                                Sometimes</label>
+                                        <label><input type="radio" name="connection2" value="4"
+                                                        onchange="updateSectionScore('connectionSection', 'connectionScore')">4
+                                                Often</label>
+                                        <label><input type="radio" name="connection2" value="5"
+                                                        onchange="updateSectionScore('connectionSection', 'connectionScore')">5
+                                                Always</label>
+                                </div>
+                        </div>
+
+                        <div class="question">
+                                <p>I give and receive support in relationships.</p>
+                                <div class="options">
+                                        <label><input type="radio" name="connection3" value="1"
+                                                        onchange="updateSectionScore('connectionSection', 'connectionScore')"
+                                                        required>1 Never</label>
+                                        <label><input type="radio" name="connection3" value="2"
+                                                        onchange="updateSectionScore('connectionSection', 'connectionScore')">2
+                                                Rarely</label>
+                                        <label><input type="radio" name="connection3" value="3"
+                                                        onchange="updateSectionScore('connectionSection', 'connectionScore')">3
+                                                Sometimes</label>
+                                        <label><input type="radio" name="connection3" value="4"
+                                                        onchange="updateSectionScore('connectionSection', 'connectionScore')">4
+                                                Often</label>
+                                        <label><input type="radio" name="connection3" value="5"
+                                                        onchange="updateSectionScore('connectionSection', 'connectionScore')">5
+                                                Always</label>
+                                </div>
+                        </div>
+
+                        <div class="question">
+                                <p>I know how to ask for help when I need it. <span
+                                                class="knowledge-access">(Knowledge/Practice)</span>
+                                </p>
+                                <div class="options">
+                                        <label><input type="radio" name="connection4" value="1"
+                                                        onchange="updateSectionScore('connectionSection', 'connectionScore')"
+                                                        required>1 Never</label>
+                                        <label><input type="radio" name="connection4" value="2"
+                                                        onchange="updateSectionScore('connectionSection', 'connectionScore')">2
+                                                Rarely</label>
+                                        <label><input type="radio" name="connection4" value="3"
+                                                        onchange="updateSectionScore('connectionSection', 'connectionScore')">3
+                                                Sometimes</label>
+                                        <label><input type="radio" name="connection4" value="4"
+                                                        onchange="updateSectionScore('connectionSection', 'connectionScore')">4
+                                                Often</label>
+                                        <label><input type="radio" name="connection4" value="5"
+                                                        onchange="updateSectionScore('connectionSection', 'connectionScore')">5
+                                                Always</label>
+                                </div>
+
+                                <div class="question">
+                                        <p>I have access to social spaces, events, or circles where I can connect with
+                                                others. </p>
+                                        <div class="options">
+                                                <label><input type="radio" name="connection5" value="1"
+                                                                onchange="updateSectionScore('connectionSection', 'connectionScore')"
+                                                                required>1 Never</label>
+                                                <label><input type="radio" name="connection5" value="2"
+                                                                onchange="updateSectionScore('connectionSection', 'connectionScore')">2
+                                                        Rarely</label>
+                                                <label><input type="radio" name="connection5" value="3"
+                                                                onchange="updateSectionScore('connectionSection', 'connectionScore')">3
+                                                        Sometimes</label>
+                                                <label><input type="radio" name="connection5" value="4"
+                                                                onchange="updateSectionScore('connectionSection', 'connectionScore')">5
+                                                        Often</label>
+                                                <label><input type="radio" name="connection5" value="5"
+                                                                onchange="updateSectionScore('connectionSection', 'connectionScore')">5
+                                                        Always</label>
+                                        </div>
+
+                                        <div class="score-section">
+                                                <label for="connectionScore">Your Connection Score: </label>
+                                                <input type="number" id="connectionScore" readonly> / 25
+                                        </div>
+                                </div>
+
+                        </div>
+                </div>
+
+                <!-- 7. Nature SECTION -->
+                <div class="section" id="natureSection">
+                        <h2>7. Nature</h2>
+
+                        <div class="question">
+                                <p>I spend time in nature regularly</p>
+                                <div class="options">
+                                        <label><input type="radio" name="nature1" value="1" required
+                                                        onchange="updateSectionScore('natureSection', 'natureScore')">1
+                                                Never</label>
+                                        <label><input type="radio" name="nature1" value="2"
+                                                        onchange="updateSectionScore('natureSection', 'natureScore')">2
+                                                Rarely</label>
+                                        <label><input type="radio" name="nature1" value="3"
+                                                        onchange="updateSectionScore('natureSection', 'natureScore')">3
+                                                Sometimes</label>
+                                        <label><input type="radio" name="nature1" value="4"
+                                                        onchange="updateSectionScore('natureSection', 'natureScore')">4
+                                                Often</label>
+                                        <label><input type="radio" name="nature1" value="5"
+                                                        onchange="updateSectionScore('natureSection', 'natureScore')">5
+                                                Always</label>
+                                </div>
+                        </div>
+
+                        <div class="question">
+                                <p>Being in nature helps me feel grounded.
+                                </p>
+                                <div class="options">
+                                        <label><input type="radio" name="nature2" value="1"
+                                                        onchange="updateSectionScore('natureSection', 'natureScore')"
+                                                        required>1 Never</label>
+                                        <label><input type="radio" name="nature2" value="2"
+                                                        onchange="updateSectionScore('natureSection', 'natureScore')">2
+                                                Rarely</label>
+                                        <label><input type="radio" name="nature2" value="3"
+                                                        onchange="updateSectionScore('natureSection', 'natureScore')">3
+                                                Sometimes</label>
+                                        <label><input type="radio" name="nature2" value="4"
+                                                        onchange="updateSectionScore('natureSection', 'natureScore')">4
+                                                Often</label>
+                                        <label><input type="radio" name="nature2" value="5"
+                                                        onchange="updateSectionScore('natureSection', 'natureScore')">5
+                                                Always</label>
+                                </div>
+                        </div>
+
+                        <div class="question">
+                                <p>I bring nature into my home/workspace (plants, fresh air, sunlight).
+                                </p>
+                                <div class="options">
+                                        <label><input type="radio" name="nature3" value="1"
+                                                        onchange="updateSectionScore('natureSection', 'natureScore')"
+                                                        required>1 Never</label>
+                                        <label><input type="radio" name="nature3" value="2"
+                                                        onchange="updateSectionScore('natureSection', 'natureScore')">2
+                                                Rarely</label>
+                                        <label><input type="radio" name="nature3" value="3"
+                                                        onchange="updateSectionScore('natureSection', 'natureScore')">3
+                                                Sometimes</label>
+                                        <label><input type="radio" name="nature3" value="4"
+                                                        onchange="updateSectionScore('natureSection', 'natureScore')">4
+                                                Often</label>
+                                        <label><input type="radio" name="nature3" value="5"
+                                                        onchange="updateSectionScore('natureSection', 'natureScore')">5
+                                                Always</label>
+                                </div>
+                        </div>
+
+                        <div class="question">
+                                <p>I know the benefits of spending time in nature
+                                </p>
+                                <div class="options">
+                                        <label><input type="radio" name="nature4" value="1"
+                                                        onchange="updateSectionScore('natureSection', 'natureScore')"
+                                                        required>1 Never</label>
+                                        <label><input type="radio" name="nature4" value="2"
+                                                        onchange="updateSectionScore('natureSection', 'natureScore')">2
+                                                Rarely</label>
+                                        <label><input type="radio" name="nature4" value="3"
+                                                        onchange="updateSectionScore('natureSection', 'natureScore')">3
+                                                Sometimes</label>
+                                        <label><input type="radio" name="nature4" value="4"
+                                                        onchange="updateSectionScore('natureSection', 'natureScore')">4
+                                                Often</label>
+                                        <label><input type="radio" name="nature4" value="5"
+                                                        onchange="updateSectionScore('natureSection', 'natureScore')">5
+                                                Always</label>
+                                </div>
+                        </div>
+
+                        <div class="question">
+                                <p>I have access to safe natural environments nearby</span></p>
+                                <div class="options">
+                                        <label><input type="radio" name="nature5" value="1"
+                                                        onchange="updateSectionScore('natureSection', 'natureScore')"
+                                                        required>1 Never</label>
+                                        <label><input type="radio" name="nature5" value="2"
+                                                        onchange="updateSectionScore('natureSection', 'natureScore')">2
+                                                Rarely</label>
+                                        <label><input type="radio" name="nature5" value="3"
+                                                        onchange="updateSectionScore('natureSection', 'natureScore')">3
+                                                Sometimes</label>
+                                        <label><input type="radio" name="nature5" value="4"
+                                                        onchange="updateSectionScore('natureSection', 'natureScore')">4
+                                                Often</label>
+                                        <label><input type="radio" name="nature5" value="5"
+                                                        onchange="updateSectionScore('natureSection', 'natureScore')">5
+                                                Always</label>
+                                </div>
+                        </div>
+
+                        <div class="score-section">
+                                <label for="natureScore">Your nature Score (excluding sleep hours): </label>
+                                <input type="number" id="natureScore" readonly> / 25
+                        </div>
+                </div>
+
+
+                <!-- Submit Button -->
+                <button type="button" class="submit-button" onclick="calculateFinalScore()">Submit</button>
+        </form>
+        <!-- Recommendation Section -->
+        <div id="recommendation" class="recommendation">
+                <h3 id="recommendationHeading"></h3>
+                <p id="recommendationMessage"></p>
         </div>
-        <h1>7 Pillars of Wellbeing: Self-Assessment</h1>
-        <p>Rate each statement on a scale from <strong>1 (Never)</strong> to <strong>5 (Always)</strong> unless
-            otherwise indicated.</p>
-    </header>
 
-    <form id="wellnessForm">
-        <!-- 1. MOVEMENT SECTION -->
-        <div class="section" id="movementSection">
-            <h2>1. Movement</h2>
+        <script>
+                // Automatically calculate and update the section score when an option is selected
+                function updateSectionScore(sectionId, scoreInputId) {
+                        const section = document.getElementById(sectionId);
+                        const inputs = section.querySelectorAll('input[type="radio"]:checked');
+                        let sectionScore = 0;
 
-            <div class="question">
-                <p>I engage in physical movement (e.g., walking, yoga, dancing, workouts) at least 3-5 times a week.</p>
-                <div class="options">
-                    <label><input type="radio" name="movement1" value="1" required
-                            onchange="updateSectionScore('movementSection', 'movementScore')">1<br>Never</label>
-                    <label><input type="radio" name="movement1" value="2" required
-                            onchange="updateSectionScore('movementSection', 'movementScore')">2<br>Rarely</label>
-                    <label><input type="radio" name="movement1" value="3"
-                            onchange="updateSectionScore('movementSection', 'movementScore')">3<br>Sometimes</label>
-                    <label><input type="radio" name="movement1" value="4"
-                            onchange="updateSectionScore('movementSection', 'movementScore')">4<br>Often</label>
-                    <label><input type="radio" name="movement1" value="5"
-                            onchange="updateSectionScore('movementSection', 'movementScore')">5<br>Always</label>
-                </div>
-            </div>
+                        inputs.forEach(input => {
+                                const numericValue = parseInt(input.value, 10);
+                                if (!isNaN(numericValue)) {
+                                        sectionScore += numericValue;
+                                }
+                        });
 
-            <div class="question">
-                <p>I enjoy the physical activities I choose to do.</p>
-                <div class="options">
-                    <label><input type="radio" name="movement2" value="1" required
-                            onchange="updateSectionScore('movementSection', 'movementScore')">1<br>Never</label>
-                    <label><input type="radio" name="movement2" value="2"
-                            onchange="updateSectionScore('movementSection', 'movementScore')">2<br>Rarely</label>
-                    <label><input type="radio" name="movement2" value="3"
-                            onchange="updateSectionScore('movementSection', 'movementScore')">3<br>Sometimes</label>
-                    <label><input type="radio" name="movement2" value="4"
-                            onchange="updateSectionScore('movementSection', 'movementScore')">4<br>Often</label>
-                    <label><input type="radio" name="movement2" value="5"
-                            onchange="updateSectionScore('movementSection', 'movementScore')">5<br>Always</label>
-                </div>
-            </div>
-
-            <div class="question">
-                <p>I feel strong, flexible, and energized.</p>
-                <div class="options">
-                    <label><input type="radio" name="movement3" value="1" required
-                            onchange="updateSectionScore('movementSection', 'movementScore')">1<br>Never</label>
-                    <label><input type="radio" name="movement3" value="2"
-                            onchange="updateSectionScore('movementSection', 'movementScore')">2<br>Rarely</label>
-                    <label><input type="radio" name="movement3" value="3"
-                            onchange="updateSectionScore('movementSection', 'movementScore')">3<br>Sometimes</label>
-                    <label><input type="radio" name="movement3" value="4"
-                            onchange="updateSectionScore('movementSection', 'movementScore')">4<br>Often</label>
-                    <label><input type="radio" name="movement3" value="5"
-                            onchange="updateSectionScore('movementSection', 'movementScore')">5<br>Always</label>
-                </div>
-            </div>
-
-            <div class="question">
-                <p>I know how to stretch or strengthen specific muscles in my body when I feel pain or tightness. <span
-                        class="knowledge-access">(Knowledge)</span></p>
-                <div class="options">
-                    <label><input type="radio" name="movement4" value="1" required
-                            onchange="updateSectionScore('movementSection', 'movementScore')">1<br>Never</label>
-                    <label><input type="radio" name="movement4" value="2"
-                            onchange="updateSectionScore('movementSection', 'movementScore')">2<br>Rarely</label>
-                    <label><input type="radio" name="movement4" value="3"
-                            onchange="updateSectionScore('movementSection', 'movementScore')">3<br>Sometimes</label>
-                    <label><input type="radio" name="movement4" value="4"
-                            onchange="updateSectionScore('movementSection', 'movementScore')">4<br>Often</label>
-                    <label><input type="radio" name="movement4" value="5"
-                            onchange="updateSectionScore('movementSection', 'movementScore')">5<br>Always</label>
-                </div>
-            </div>
-
-            <div class="question">
-                <p>I have access to a safe and affordable space to move or exercise (e.g., gym, park, studio, home).
-                    <span class="knowledge-access">(Access)</span>
-                </p>
-                <div class="options">
-                    <label><input type="radio" name="movement5" value="1" required
-                            onchange="updateSectionScore('movementSection', 'movementScore')">1<br>Never</label>
-                    <label><input type="radio" name="movement5" value="2"
-                            onchange="updateSectionScore('movementSection', 'movementScore')">2<br>Rarely</label>
-                    <label><input type="radio" name="movement5" value="3"
-                            onchange="updateSectionScore('movementSection', 'movementScore')">3<br>Sometimes</label>
-                    <label><input type="radio" name="movement5" value="4"
-                            onchange="updateSectionScore('movementSection', 'movementScore')">4<br>Often</label>
-                    <label><input type="radio" name="movement5" value="5"
-                            onchange="updateSectionScore('movementSection', 'movementScore')">5<br>Always</label>
-                </div>
-            </div>
-
-            <div class="score-section">
-                <label for="movementScore">Your Movement Score: </label>
-                <input type="number" id="movementScore" readonly> / 25
-            </div>
-        </div>
-
-        <!-- 2. MEDITATION SECTION -->
-        <div class="section" id="meditationSection">
-            <h2>2. Meditation</h2>
-
-            <div class="question">
-                <p>I practice meditation, mindfulness, or breathwork at least once a week.</p>
-                <div class="options">
-                    <label><input type="radio" name="meditation1" value="1" required
-                            onchange="updateSectionScore('meditationSection', 'meditationScore')">1<br>Never</label>
-                    <label><input type="radio" name="meditation1" value="2"
-                            onchange="updateSectionScore('meditationSection', 'meditationScore')">2<br>Rarely</label>
-                    <label><input type="radio" name="meditation1" value="3"
-                            onchange="updateSectionScore('meditationSection', 'meditationScore')">3<br>Sometimes</label>
-                    <label><input type="radio" name="meditation1" value="4"
-                            onchange="updateSectionScore('meditationSection', 'meditationScore')">4<br>Often</label>
-                    <label><input type="radio" name="meditation1" value="5"
-                            onchange="updateSectionScore('meditationSection', 'meditationScore')">5<br>Always</label>
-                </div>
-            </div>
-
-            <div class="question">
-                <p>I feel more focused and calm after these practices.</p>
-                <div class="options">
-                    <label><input type="radio" name="meditation2" value="1"
-                            onchange="updateSectionScore('meditationSection', 'meditationScore')"
-                            required>1<br>Never</label>
-                    <label><input type="radio" name="meditation2" value="2"
-                            onchange="updateSectionScore('meditationSection', 'meditationScore')">2<br>Rarely</label>
-                    <label><input type="radio" name="meditation2" value="3"
-                            onchange="updateSectionScore('meditationSection', 'meditationScore')">3<br>Sometimes</label>
-                    <label><input type="radio" name="meditation2" value="4"
-                            onchange="updateSectionScore('meditationSection', 'meditationScore')">4<br>Often</label>
-                    <label><input type="radio" name="meditation2" value="5"
-                            onchange="updateSectionScore('meditationSection', 'meditationScore')">5<br>Always</label>
-                </div>
-            </div>
-
-            <div class="question">
-                <p>I know how to meditate or use breath to relax when I feel overwhelmed. <span
-                        class="knowledge-access">(Knowledge)</span></p>
-                <div class="options">
-                    <label><input type="radio" name="meditation3" value="1"
-                            onchange="updateSectionScore('meditationSection', 'meditationScore')"
-                            required>1<br>Never</label>
-                    <label><input type="radio" name="meditation3" value="2"
-                            onchange="updateSectionScore('meditationSection', 'meditationScore')">2<br>Rarely</label>
-                    <label><input type="radio" name="meditation3" value="3"
-                            onchange="updateSectionScore('meditationSection', 'meditationScore')">3<br>Sometimes</label>
-                    <label><input type="radio" name="meditation3" value="4"
-                            onchange="updateSectionScore('meditationSection', 'meditationScore')">4<br>Often</label>
-                    <label><input type="radio" name="meditation3" value="5"
-                            onchange="updateSectionScore('meditationSection', 'meditationScore')">5<br>Always</label>
-                </div>
-            </div>
-
-            <div class="question">
-                <p>I have time and a quiet space to meditate or reflect regularly. <span
-                        class="knowledge-access">(Access)</span></p>
-                <div class="options">
-                    <label><input type="radio" name="meditation4" value="1"
-                            onchange="updateSectionScore('meditationSection', 'meditationScore')"
-                            required>1<br>Never</label>
-                    <label><input type="radio" name="meditation4" value="2"
-                            onchange="updateSectionScore('meditationSection', 'meditationScore')">2<br>Rarely</label>
-                    <label><input type="radio" name="meditation4" value="3"
-                            onchange="updateSectionScore('meditationSection', 'meditationScore')">3<br>Sometimes</label>
-                    <label><input type="radio" name="meditation4" value="4"
-                            onchange="updateSectionScore('meditationSection', 'meditationScore')">4<br>Often</label>
-                    <label><input type="radio" name="meditation4" value="5"
-                            onchange="updateSectionScore('meditationSection', 'meditationScore')">5<br>Always</label>
-                </div>
-            </div>
-
-            <div class="score-section">
-                <label for="meditationScore">Your Meditation Score: </label>
-                <input type="number" id="meditationScore" readonly> / 20
-            </div>
-            <!-- <button type="button" onclick="calculateSectionScore('meditationSection', 'meditationScore')">Submit Movement</button> -->
-        </div>
-
-        <!-- 3. NUTRITION SECTION -->
-        <div class="section" id="nutritionSection">
-            <h2>3. Nutrition</h2>
-
-            <div class="question">
-                <p>I eat a balanced diet that supports my energy and well-being.</p>
-                <div class="options">
-                    <label><input type="radio" name="nutrition1" value="1" required
-                            onchange="updateSectionScore('nutritionSection', 'nutritionScore')">1<br>Never</label>
-                    <label><input type="radio" name="nutrition1" value="2"
-                            onchange="updateSectionScore('nutritionSection', 'nutritionScore')">2<br>Rarely</label>
-                    <label><input type="radio" name="nutrition1" value="3"
-                            onchange="updateSectionScore('nutritionSection', 'nutritionScore')">3<br>Sometimes</label>
-                    <label><input type="radio" name="nutrition1" value="4"
-                            onchange="updateSectionScore('nutritionSection', 'nutritionScore')">4<br>Often</label>
-                    <label><input type="radio" name="nutrition1" value="5"
-                            onchange="updateSectionScore('nutritionSection', 'nutritionScore')">5<br>Always</label>
-                </div>
-            </div>
-
-            <div class="question">
-                <p>I hydrate throughout the day.</p>
-                <div class="options">
-                    <label><input type="radio" name="nutrition2" value="1"
-                            onchange="updateSectionScore('nutritionSection', 'nutritionScore')"
-                            required>1<br>Never</label>
-                    <label><input type="radio" name="nutrition2" value="2"
-                            onchange="updateSectionScore('nutritionSection', 'nutritionScore')">2<br>Rarely</label>
-                    <label><input type="radio" name="nutrition2" value="3"
-                            onchange="updateSectionScore('nutritionSection', 'nutritionScore')">3<br>Sometimes</label>
-                    <label><input type="radio" name="nutrition2" value="4"
-                            onchange="updateSectionScore('nutritionSection', 'nutritionScore')">4<br>Often</label>
-                    <label><input type="radio" name="nutrition2" value="5"
-                            onchange="updateSectionScore('nutritionSection', 'nutritionScore')">5<br>Always</label>
-                </div>
-            </div>
-
-            <div class="question">
-                <p>I limit processed food and excess sugar.</p>
-                <div class="options">
-                    <label><input type="radio" name="nutrition3" value="1"
-                            onchange="updateSectionScore('nutritionSection', 'nutritionScore')"
-                            required>1<br>Never</label>
-                    <label><input type="radio" name="nutrition3" value="2"
-                            onchange="updateSectionScore('nutritionSection', 'nutritionScore')">2<br>Rarely</label>
-                    <label><input type="radio" name="nutrition3" value="3"
-                            onchange="updateSectionScore('nutritionSection', 'nutritionScore')">3<br>Sometimes</label>
-                    <label><input type="radio" name="nutrition3" value="4"
-                            onchange="updateSectionScore('nutritionSection', 'nutritionScore')">4<br>Often</label>
-                    <label><input type="radio" name="nutrition3" value="5"
-                            onchange="updateSectionScore('nutritionSection', 'nutritionScore')">5<br>Always</label>
-                </div>
-            </div>
-
-            <div class="question">
-                <p>Do you smoke?</p>
-                <div class="options">
-                    <label><input type="radio" name="nutrition4" required>5<br>Half
-                        pack+</label>
-                    <label><input type="radio" name="nutrition4">3<br>Socially</label>
-                    <label><input type="radio" name="nutrition4">0<br>No</label>
-                </div>
-            </div>
-
-            <div class="question">
-                <p>Do you drink alcohol?</p>
-                <div class="options">
-                    <label><input type="radio" name="nutrition5" required>5<br>Almost
-                        daily</label>
-                    <label><input type="radio" name="nutrition5">3<br>Weekly</label>
-                    <label><input type="radio" name="nutrition5">0<br>No</label>
-                </div>
-            </div>
-
-            <div class="question">
-                <p>I understand my personal protein needs and how to meet them through my diet. <span
-                        class="knowledge-access">(Knowledge)</span></p>
-                <div class="options">
-                    <label><input type="radio" name="nutrition6" value="1"
-                            onchange="updateSectionScore('nutritionSection', 'nutritionScore')"
-                            required>1<br>Never</label>
-                    <label><input type="radio" name="nutrition6" value="2"
-                            onchange="updateSectionScore('nutritionSection', 'nutritionScore')">2<br>Rarely</label>
-                    <label><input type="radio" name="nutrition6" value="3"
-                            onchange="updateSectionScore('nutritionSection', 'nutritionScore')">3<br>Sometimes</label>
-                    <label><input type="radio" name="nutrition6" value="4"
-                            onchange="updateSectionScore('nutritionSection', 'nutritionScore')">4<br>Often</label>
-                    <label><input type="radio" name="nutrition6" value="5"
-                            onchange="updateSectionScore('nutritionSection', 'nutritionScore')">5<br>Always</label>
-                </div>
-            </div>
-
-            <div class="question">
-                <p>I know how to prepare healthy meals that nourish me. <span
-                        class="knowledge-access">(Knowledge/Practice)</span></p>
-                <div class="options">
-                    <label><input type="radio" name="nutrition7" value="1"
-                            onchange="updateSectionScore('nutritionSection', 'nutritionScore')"
-                            required>1<br>Never</label>
-                    <label><input type="radio" name="nutrition7" value="2"
-                            onchange="updateSectionScore('nutritionSection', 'nutritionScore')">2<br>Rarely</label>
-                    <label><input type="radio" name="nutrition7" value="3"
-                            onchange="updateSectionScore('nutritionSection', 'nutritionScore')">3<br>Sometimes</label>
-                    <label><input type="radio" name="nutrition7" value="4"
-                            onchange="updateSectionScore('nutritionSection', 'nutritionScore')">4<br>Often</label>
-                    <label><input type="radio" name="nutrition7" value="5"
-                            onchange="updateSectionScore('nutritionSection', 'nutritionScore')">5<br>Always</label>
-                </div>
-            </div>
-
-            <div class="question">
-                <p>I have access to affordable, healthy food options. <span class="knowledge-access">(Access)</span></p>
-                <div class="options">
-                    <label><input type="radio" name="nutrition8" value="1"
-                            onchange="updateSectionScore('nutritionSection', 'nutritionScore')"
-                            required>1<br>Never</label>
-                    <label><input type="radio" name="nutrition8" value="2"
-                            onchange="updateSectionScore('nutritionSection', 'nutritionScore')">2<br>Rarely</label>
-                    <label><input type="radio" name="nutrition8" value="3"
-                            onchange="updateSectionScore('nutritionSection', 'nutritionScore')">3<br>Sometimes</label>
-                    <label><input type="radio" name="nutrition8" value="4"
-                            onchange="updateSectionScore('nutritionSection', 'nutritionScore')">4<br>Often</label>
-                    <label><input type="radio" name="nutrition8" value="5"
-                            onchange="updateSectionScore('nutritionSection', 'nutritionScore')">5<br>Always</label>
-                </div>
-            </div>
-
-            <div class="score-section">
-                <label for="nutritionScore">Your Nutrition Score (excluding smoking/drinking): </label>
-                <input type="number" id="nutritionScore" readonly> / 30
-            </div>
-        </div>
-
-        <!-- 4. MENTAL WELLNESS SECTION -->
-        <div class="section" id="mentalWellnessSection">
-            <h2>4. Mental Wellness</h2>
-
-            <div class="question">
-                <p>I can manage stress in healthy ways.</p>
-                <div class="options">
-                    <label><input type="radio" name="mental1" value="1" required
-                            onChange="updateSectionScore('mentalWellnessSection', 'mentalScore')">1<br>Never</label>
-                    <label><input type="radio" name="mental1" value="2"
-                            onChange="updateSectionScore('mentalWellnessSection', 'mentalScore')">2<br>Rarely</label>
-                    <label><input type="radio" name="mental1" value="3"
-                            onChange="updateSectionScore('mentalWellnessSection', 'mentalScore')">3<br>Sometimes</label>
-                    <label><input type="radio" name="mental1" value="4"
-                            onChange="updateSectionScore('mentalWellnessSection', 'mentalScore')">4<br>Often</label>
-                    <label><input type="radio" name="mental1" value="5"
-                            onChange="updateSectionScore('mentalWellnessSection', 'mentalScore')">5<br>Always</label>
-                </div>
-            </div>
-
-            <div class="question">
-                <p>My relationships feel emotionally supportive.</p>
-                <div class="options">
-                    <label><input type="radio" name="mental2" value="1"
-                            onChange="updateSectionScore('mentalWellnessSection', 'mentalScore')"
-                            required>1<br>Never</label>
-                    <label><input type="radio" name="mental2" value="2"
-                            onChange="updateSectionScore('mentalWellnessSection', 'mentalScore')">2<br>Rarely</label>
-                    <label><input type="radio" name="mental2" value="3"
-                            onChange="updateSectionScore('mentalWellnessSection', 'mentalScore')">3<br>Sometimes</label>
-                    <label><input type="radio" name="mental2" value="4"
-                            onChange="updateSectionScore('mentalWellnessSection', 'mentalScore')">4<br>Often</label>
-                    <label><input type="radio" name="mental2" value="5"
-                            onChange="updateSectionScore('mentalWellnessSection', 'mentalScore')">5<br>Always</label>
-                </div>
-            </div>
-
-            <div class="question">
-                <p>My work or study environment is not toxic.</p>
-                <div class="options">
-                    <label><input type="radio" name="mental3" value="1"
-                            onChange="updateSectionScore('mentalWellnessSection', 'mentalScore')"
-                            required>1<br>Never</label>
-                    <label><input type="radio" name="mental3" value="2"
-                            onChange="updateSectionScore('mentalWellnessSection', 'mentalScore')">2<br>Rarely</label>
-                    <label><input type="radio" name="mental3" value="3"
-                            onChange="updateSectionScore('mentalWellnessSection', 'mentalScore')">3<br>Sometimes</label>
-                    <label><input type="radio" name="mental3" value="4"
-                            onChange="updateSectionScore('mentalWellnessSection', 'mentalScore')">4<br>Often</label>
-                    <label><input type="radio" name="mental3" value="5"
-                            onChange="updateSectionScore('mentalWellnessSection', 'mentalScore')">5<br>Always</label>
-                </div>
-            </div>
-
-            <div class="question">
-                <p>I am not often overwhelmed by depression or anxiety.</p>
-                <div class="options">
-                    <label><input type="radio" name="mental4" value="1"
-                            onChange="updateSectionScore('mentalWellnessSection', 'mentalScore')"
-                            required>1<br>Never</label>
-                    <label><input type="radio" name="mental4" value="2"
-                            onChange="updateSectionScore('mentalWellnessSection', 'mentalScore')">2<br>Rarely</label>
-                    <label><input type="radio" name="mental4" value="3"
-                            onChange="updateSectionScore('mentalWellnessSection', 'mentalScore')">3<br>Sometimes</label>
-                    <label><input type="radio" name="mental4" value="4"
-                            onChange="updateSectionScore('mentalWellnessSection', 'mentalScore')">4<br>Often</label>
-                    <label><input type="radio" name="mental4" value="5"
-                            onChange="updateSectionScore('mentalWellnessSection', 'mentalScore')">5<br>Always</label>
-                </div>
-            </div>
-
-            <div class="question">
-                <p>I feel hopeful and motivated.</p>
-                <div class="options">
-                    <label><input type="radio" name="mental5" value="1"
-                            onChange="updateSectionScore('mentalWellnessSection', 'mentalScore')"
-                            required>1<br>Never</label>
-                    <label><input type="radio" name="mental5" value="2"
-                            onChange="updateSectionScore('mentalWellnessSection', 'mentalScore')">2<br>Rarely</label>
-                    <label><input type="radio" name="mental5" value="3"
-                            onChange="updateSectionScore('mentalWellnessSection', 'mentalScore')">3<br>Sometimes</label>
-                    <label><input type="radio" name="mental5" value="4"
-                            onChange="updateSectionScore('mentalWellnessSection', 'mentalScore')">4<br>Often</label>
-                    <label><input type="radio" name="mental5" value="5"
-                            onChange="updateSectionScore('mentalWellnessSection', 'mentalScore')">5<br>Always</label>
-                </div>
-            </div>
-
-            <div class="question">
-                <p>I know who to reach out to for mental health support if needed. <span
-                        class="knowledge-access">(Knowledge/Access)</span></p>
-                <div class="options">
-                    <label><input type="radio" name="mental6" value="1"
-                            onChange="updateSectionScore('mentalWellnessSection', 'mentalScore')"
-                            required>1<br>Never</label>
-                    <label><input type="radio" name="mental6" value="2"
-                            onChange="updateSectionScore('mentalWellnessSection', 'mentalScore')">2<br>Rarely</label>
-                    <label><input type="radio" name="mental6" value="3"
-                            onChange="updateSectionScore('mentalWellnessSection', 'mentalScore')">3<br>Sometimes</label>
-                    <label><input type="radio" name="mental6" value="4"
-                            onChange="updateSectionScore('mentalWellnessSection', 'mentalScore')">4<br>Often</label>
-                    <label><input type="radio" name="mental6" value="5"
-                            onChange="updateSectionScore('mentalWellnessSection', 'mentalScore')">5<br>Always</label>
-                </div>
-            </div>
-
-            <div class="score-section">
-                <label for="mentalScore">Your Mental Wellness Score: </label>
-                <input type="number" id="mentalScore" readonly> / 30
-            </div>
-        </div>
-
-        <!-- 5. RELAXATION SECTION -->
-        <div class="section" id="relaxationSection">
-            <h2>5. Relaxation</h2>
-
-            <div class="question">
-                <p>I get enough restful sleep (7-9 hours per night).</p>
-                <div class="options">
-                    <label><input type="radio" name="relaxation1" value="1" required
-                            onchange="updateSectionScore('relaxationSection', 'relaxationScore')">1<br>Never</label>
-                    <label><input type="radio" name="relaxation1" value="2"
-                            onchange="updateSectionScore('relaxationSection', 'relaxationScore')">2<br>Rarely</label>
-                    <label><input type="radio" name="relaxation1" value="3"
-                            onchange="updateSectionScore('relaxationSection', 'relaxationScore')">3<br>Sometimes</label>
-                    <label><input type="radio" name="relaxation1" value="4"
-                            onchange="updateSectionScore('relaxationSection', 'relaxationScore')">4<br>Often</label>
-                    <label><input type="radio" name="relaxation1" value="5"
-                            onchange="updateSectionScore('relaxationSection', 'relaxationScore')">5<br>Always</label>
-                </div>
-            </div>
-
-            <div class="question">
-                <p>I make time for rest, hobbies, or joy.</p>
-                <div class="options">
-                    <label><input type="radio" name="relaxation2" value="1"
-                            onchange="updateSectionScore('relaxationSection', 'relaxationScore')"
-                            required>1<br>Never</label>
-                    <label><input type="radio" name="relaxation2" value="2"
-                            onchange="updateSectionScore('relaxationSection', 'relaxationScore')">2<br>Rarely</label>
-                    <label><input type="radio" name="relaxation2" value="3"
-                            onchange="updateSectionScore('relaxationSection', 'relaxationScore')">3<br>Sometimes</label>
-                    <label><input type="radio" name="relaxation2" value="4"
-                            onchange="updateSectionScore('relaxationSection', 'relaxationScore')">4<br>Often</label>
-                    <label><input type="radio" name="relaxation2" value="5"
-                            onchange="updateSectionScore('relaxationSection', 'relaxationScore')">5<br>Always</label>
-                </div>
-            </div>
-
-            <div class="question">
-                <p>I unplug from screens to recharge.</p>
-                <div class="options">
-                    <label><input type="radio" name="relaxation3" value="1"
-                            onchange="updateSectionScore('relaxationSection', 'relaxationScore')"
-                            required>1<br>Never</label>
-                    <label><input type="radio" name="relaxation3" value="2"
-                            onchange="updateSectionScore('relaxationSection', 'relaxationScore')">2<br>Rarely</label>
-                    <label><input type="radio" name="relaxation3" value="3"
-                            onchange="updateSectionScore('relaxationSection', 'relaxationScore')">3<br>Sometimes</label>
-                    <label><input type="radio" name="relaxation3" value="4"
-                            onchange="updateSectionScore('relaxationSection', 'relaxationScore')">4<br>Often</label>
-                    <label><input type="radio" name="relaxation3" value="5"
-                            onchange="updateSectionScore('relaxationSection', 'relaxationScore')">5<br>Always</label>
-                </div>
-            </div>
-
-            <div class="question">
-                <p>I know what helps me personally unwind and relax. <span class="knowledge-access">(Knowledge)</span>
-                </p>
-                <div class="options">
-                    <label><input type="radio" name="relaxation4" value="1"
-                            onchange="updateSectionScore('relaxationSection', 'relaxationScore')"
-                            required>1<br>Never</label>
-                    <label><input type="radio" name="relaxation4" value="2"
-                            onchange="updateSectionScore('relaxationSection', 'relaxationScore')">2<br>Rarely</label>
-                    <label><input type="radio" name="relaxation4" value="3"
-                            onchange="updateSectionScore('relaxationSection', 'relaxationScore')">3<br>Sometimes</label>
-                    <label><input type="radio" name="relaxation4" value="4"
-                            onchange="updateSectionScore('relaxationSection', 'relaxationScore')">4<br>Often</label>
-                    <label><input type="radio" name="relaxation4" value="5"
-                            onchange="updateSectionScore('relaxationSection', 'relaxationScore')">5<br>Always</label>
-                </div>
-            </div>
-
-            <div class="question">
-                <p>I have the time and space in my life for rest. <span class="knowledge-access">(Access)</span></p>
-                <div class="options">
-                    <label><input type="radio" name="relaxation5" value="1"
-                            onchange="updateSectionScore('relaxationSection', 'relaxationScore')"
-                            required>1<br>Never</label>
-                    <label><input type="radio" name="relaxation5" value="2"
-                            onchange="updateSectionScore('relaxationSection', 'relaxationScore')">2<br>Rarely</label>
-                    <label><input type="radio" name="relaxation5" value="3"
-                            onchange="updateSectionScore('relaxationSection', 'relaxationScore')">3<br>Sometimes</label>
-                    <label><input type="radio" name="relaxation5" value="4"
-                            onchange="updateSectionScore('relaxationSection', 'relaxationScore')">4<br>Often</label>
-                    <label><input type="radio" name="relaxation5" value="5"
-                            onchange="updateSectionScore('relaxationSection', 'relaxationScore')">5<br>Always</label>
-                </div>
-            </div>
-
-            <div class="question">
-                <p>How many hours do you typically sleep per night?</p>
-                <input type="number" name="sleepHours" min="1" max="12" required>
-            </div>
-
-            <div class="score-section">
-                <label for="relaxationScore">Your Relaxation Score (excluding sleep hours): </label>
-                <input type="number" id="relaxationScore" readonly> / 25
-            </div>
-        </div>
-
-        <!-- 6. CONNECTION SECTION -->
-        <div class="section" id="connectionSection">
-            <h2>6. Connection</h2>
-
-            <div class="question">
-                <p>I feel a sense of belonging in my community.</p>
-                <div class="options">
-                    <label><input type="radio" name="connection1" value="1" required
-                            onchange="updateSectionScore('connectionSection', 'connectionScore')">1<br>Never</label>
-                    <label><input type="radio" name="connection1" value="2"
-                            onchange="updateSectionScore('connectionSection', 'connectionScore')">2<br>Rarely</label>
-                    <label><input type="radio" name="connection1" value="3"
-                            onchange="updateSectionScore('connectionSection', 'connectionScore')">3<br>Sometimes</label>
-                    <label><input type="radio" name="connection1" value="4"
-                            onchange="updateSectionScore('connectionSection', 'connectionScore')">4<br>Often</label>
-                    <label><input type="radio" name="connection1" value="5"
-                            onchange="updateSectionScore('connectionSection', 'connectionScore')">5<br>Always</label>
-                </div>
-            </div>
-
-            <div class="question">
-                <p>I have someone I can speak to openly.</p>
-                <div class="options">
-                    <label><input type="radio" name="connection2" value="1"
-                            onchange="updateSectionScore('connectionSection', 'connectionScore')"
-                            required>1<br>Never</label>
-                    <label><input type="radio" name="connection2" value="2"
-                            onchange="updateSectionScore('connectionSection', 'connectionScore')">2<br>Rarely</label>
-                    <label><input type="radio" name="connection2" value="3"
-                            onchange="updateSectionScore('connectionSection', 'connectionScore')">3<br>Sometimes</label>
-                    <label><input type="radio" name="connection2" value="4"
-                            onchange="updateSectionScore('connectionSection', 'connectionScore')">4<br>Often</label>
-                    <label><input type="radio" name="connection2" value="5"
-                            onchange="updateSectionScore('connectionSection', 'connectionScore')">5<br>Always</label>
-                </div>
-            </div>
-
-            <div class="question">
-                <p>I give and receive support in relationships.</p>
-                <div class="options">
-                    <label><input type="radio" name="connection3" value="1"
-                            onchange="updateSectionScore('connectionSection', 'connectionScore')"
-                            required>1<br>Never</label>
-                    <label><input type="radio" name="connection3" value="2"
-                            onchange="updateSectionScore('connectionSection', 'connectionScore')">2<br>Rarely</label>
-                    <label><input type="radio" name="connection3" value="3"
-                            onchange="updateSectionScore('connectionSection', 'connectionScore')">3<br>Sometimes</label>
-                    <label><input type="radio" name="connection3" value="4"
-                            onchange="updateSectionScore('connectionSection', 'connectionScore')">4<br>Often</label>
-                    <label><input type="radio" name="connection3" value="5"
-                            onchange="updateSectionScore('connectionSection', 'connectionScore')">5<br>Always</label>
-                </div>
-            </div>
-
-            <div class="question">
-                <p>I know how to ask for help when I need it. <span class="knowledge-access">(Knowledge/Practice)</span>
-                </p>
-                <div class="options">
-                    <label><input type="radio" name="connection4" value="1"
-                            onchange="updateSectionScore('connectionSection', 'connectionScore')"
-                            required>1<br>Never</label>
-                    <label><input type="radio" name="connection4" value="2"
-                            onchange="updateSectionScore('connectionSection', 'connectionScore')">2<br>Rarely</label>
-                    <label><input type="radio" name="connection4" value="3"
-                            onchange="updateSectionScore('connectionSection', 'connectionScore')">3<br>Sometimes</label>
-                    <label><input type="radio" name="connection4" value="4"
-                            onchange="updateSectionScore('connectionSection', 'connectionScore')">4<br>Often</label>
-                    <label><input type="radio" name="connection4" value="5"
-                            onchange="updateSectionScore('connectionSection', 'connectionScore')">5<br>Always</label>
-                </div>
-
-                <div class="question">
-                    <p>I have access to social spaces, events, or circles where I can connect with others. </p>
-                    <div class="options">
-                        <label><input type="radio" name="connection5" value="1"
-                                onchange="updateSectionScore('connectionSection', 'connectionScore')"
-                                required>1<br>Never</label>
-                        <label><input type="radio" name="connection5" value="2"
-                                onchange="updateSectionScore('connectionSection', 'connectionScore')">2<br>Rarely</label>
-                        <label><input type="radio" name="connection5" value="3"
-                                onchange="updateSectionScore('connectionSection', 'connectionScore')">3<br>Sometimes</label>
-                        <label><input type="radio" name="connection5" value="4"
-                                onchange="updateSectionScore('connectionSection', 'connectionScore')">5<br>Often</label>
-                        <label><input type="radio" name="connection5" value="5"
-                                onchange="updateSectionScore('connectionSection', 'connectionScore')">5<br>Always</label>
-                    </div>
-
-                    <div class="score-section">
-                        <label for="connectionScore">Your Connection Score: </label>
-                        <input type="number" id="connectionScore" readonly> / 25
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- 7. Nature SECTION -->
-        <div class="section" id="natureSection">
-            <h2>7. Nature</h2>
-
-            <div class="question">
-                <p>I spend time in nature regularly</p>
-                <div class="options">
-                    <label><input type="radio" name="nature1" value="1" required
-                            onchange="updateSectionScore('natureSection', 'natureScore')">1<br>Never</label>
-                    <label><input type="radio" name="nature1" value="2"
-                            onchange="updateSectionScore('natureSection', 'natureScore')">2<br>Rarely</label>
-                    <label><input type="radio" name="nature1" value="3"
-                            onchange="updateSectionScore('natureSection', 'natureScore')">3<br>Sometimes</label>
-                    <label><input type="radio" name="nature1" value="4"
-                            onchange="updateSectionScore('natureSection', 'natureScore')">4<br>Often</label>
-                    <label><input type="radio" name="nature1" value="5"
-                            onchange="updateSectionScore('natureSection', 'natureScore')">5<br>Always</label>
-                </div>
-            </div>
-
-            <div class="question">
-                <p>Being in nature helps me feel grounded.
-                </p>
-                <div class="options">
-                    <label><input type="radio" name="nature2" value="1"
-                            onchange="updateSectionScore('natureSection', 'natureScore')" required>1<br>Never</label>
-                    <label><input type="radio" name="nature2" value="2"
-                            onchange="updateSectionScore('natureSection', 'natureScore')">2<br>Rarely</label>
-                    <label><input type="radio" name="nature2" value="3"
-                            onchange="updateSectionScore('natureSection', 'natureScore')">3<br>Sometimes</label>
-                    <label><input type="radio" name="nature2" value="4"
-                            onchange="updateSectionScore('natureSection', 'natureScore')">4<br>Often</label>
-                    <label><input type="radio" name="nature2" value="5"
-                            onchange="updateSectionScore('natureSection', 'natureScore')">5<br>Always</label>
-                </div>
-            </div>
-
-            <div class="question">
-                <p>I bring nature into my home/workspace (plants, fresh air, sunlight).
-                </p>
-                <div class="options">
-                    <label><input type="radio" name="nature3" value="1"
-                            onchange="updateSectionScore('natureSection', 'natureScore')" required>1<br>Never</label>
-                    <label><input type="radio" name="nature3" value="2"
-                            onchange="updateSectionScore('natureSection', 'natureScore')">2<br>Rarely</label>
-                    <label><input type="radio" name="nature3" value="3"
-                            onchange="updateSectionScore('natureSection', 'natureScore')">3<br>Sometimes</label>
-                    <label><input type="radio" name="nature3" value="4"
-                            onchange="updateSectionScore('natureSection', 'natureScore')">4<br>Often</label>
-                    <label><input type="radio" name="nature3" value="5"
-                            onchange="updateSectionScore('natureSection', 'natureScore')">5<br>Always</label>
-                </div>
-            </div>
-
-            <div class="question">
-                <p>I know the benefits of spending time in nature
-                </p>
-                <div class="options">
-                    <label><input type="radio" name="nature4" value="1"
-                            onchange="updateSectionScore('natureSection', 'natureScore')" required>1<br>Never</label>
-                    <label><input type="radio" name="nature4" value="2"
-                            onchange="updateSectionScore('natureSection', 'natureScore')">2<br>Rarely</label>
-                    <label><input type="radio" name="nature4" value="3"
-                            onchange="updateSectionScore('natureSection', 'natureScore')">3<br>Sometimes</label>
-                    <label><input type="radio" name="nature4" value="4"
-                            onchange="updateSectionScore('natureSection', 'natureScore')">4<br>Often</label>
-                    <label><input type="radio" name="nature4" value="5"
-                            onchange="updateSectionScore('natureSection', 'natureScore')">5<br>Always</label>
-                </div>
-            </div>
-
-            <div class="question">
-                <p>I have access to safe natural environments nearby</span></p>
-                <div class="options">
-                    <label><input type="radio" name="nature5" value="1"
-                            onchange="updateSectionScore('natureSection', 'natureScore')" required>1<br>Never</label>
-                    <label><input type="radio" name="nature5" value="2"
-                            onchange="updateSectionScore('natureSection', 'natureScore')">2<br>Rarely</label>
-                    <label><input type="radio" name="nature5" value="3"
-                            onchange="updateSectionScore('natureSection', 'natureScore')">3<br>Sometimes</label>
-                    <label><input type="radio" name="nature5" value="4"
-                            onchange="updateSectionScore('natureSection', 'natureScore')">4<br>Often</label>
-                    <label><input type="radio" name="nature5" value="5"
-                            onchange="updateSectionScore('natureSection', 'natureScore')">5<br>Always</label>
-                </div>
-            </div>
-
-            <div class="score-section">
-                <label for="natureScore">Your nature Score (excluding sleep hours): </label>
-                <input type="number" id="natureScore" readonly> / 25
-            </div>
-        </div>
-
-
-        <!-- Submit Button -->
-        <button type="button" class="submit-button" onclick="calculateFinalScore()">Submit</button>
-    </form>
-    <!-- Recommendation Section -->
-    <div id="recommendation" class="recommendation">
-        <h3 id="recommendationHeading"></h3>
-        <p id="recommendationMessage"></p>
-    </div>
-
-    <script>
-        // Automatically calculate and update the section score when an option is selected
-        function updateSectionScore(sectionId, scoreInputId) {
-            const section = document.getElementById(sectionId);
-            const inputs = section.querySelectorAll('input[type="radio"]:checked');
-            let sectionScore = 0;
-
-            inputs.forEach(input => {
-                const numericValue = parseInt(input.value, 10);
-                if (!isNaN(numericValue)) {
-                    sectionScore += numericValue;
+                        // Update the section score in the corresponding input field
+                        const scoreInput = document.getElementById(scoreInputId);
+                        scoreInput.value = sectionScore;
                 }
-            });
 
-            // Update the section score in the corresponding input field
-            const scoreInput = document.getElementById(scoreInputId);
-            scoreInput.value = sectionScore;
-        }
+                // Calculate the final score and display the recommendation
+                function calculateFinalScore() {
+                        // const allScores = document.querySelectorAll('input[type="number"][readonly]');
+                        // let totalScore = 0;
 
-        // Calculate the final score and display the recommendation
-        function calculateFinalScore() {
-            // const allScores = document.querySelectorAll('input[type="number"][readonly]');
-            // let totalScore = 0;
+                        // allScores.forEach(input => {
+                        //     const numericValue = parseInt(input.value, 10);
+                        //     if (!isNaN(numericValue)) {
+                        //         totalScore += numericValue;
+                        //     }
+                        // });
+                        const form = document.getElementById('wellnessForm');
+                        const formData = new FormData(form);
+                        let totalScore = 0;
 
-            // allScores.forEach(input => {
-            //     const numericValue = parseInt(input.value, 10);
-            //     if (!isNaN(numericValue)) {
-            //         totalScore += numericValue;
-            //     }
-            // });
-            const form = document.getElementById('wellnessForm');
-            const formData = new FormData(form);
-            let totalScore = 0;
+                        for (let value of formData.values()) {
+                                const numericValue = parseInt(value, 10);
+                                if (!isNaN(numericValue)) { // Check if the value is a valid number
+                                        totalScore += numericValue;
+                                }
+                        }
 
-            for (let value of formData.values()) {
-                const numericValue = parseInt(value, 10);
-                if (!isNaN(numericValue)) { // Check if the value is a valid number
-                    totalScore += numericValue;
-                }
-            }
+                        // Display the final recommendation
+                        const recommendation = document.getElementById('recommendation');
+                        const heading = document.getElementById('recommendationHeading');
+                        const message = document.getElementById('recommendationMessage');
+                        console.log(`Final total score:`, totalScore);
 
-            // Display the final recommendation
-            const recommendation = document.getElementById('recommendation');
-            const heading = document.getElementById('recommendationHeading');
-            const message = document.getElementById('recommendationMessage');
-            console.log(`Final total score:`, totalScore);
-
-            if (totalScore < 100) {
-                heading.textContent = "Recommendation: Dhaka Flow";
-                message.innerHTML = `
+                        if (totalScore < 100) {
+                                heading.textContent = "Recommendation: Dhaka Flow";
+                                message.innerHTML = `
   We recommend Dhaka Flow for your wellbeing journey. 
   <a href="https://www.dhakaflow.com/" target="_blank" class="text-blue-600 underline">Visit</a> our website for resources and guidance. 
   <a href="https://www.dhakaflow.com/" target="_blank">
@@ -956,15 +1194,20 @@
     </button>
   </a>`;
 
-            } else {
-                heading.textContent = "Thank You!";
-                message.textContent = `Your total score: ${totalScore}. Thank you for being with us. Keep up the great work on your wellbeing!`;
-            }
+                        } else {
+                                heading.textContent = "Thank You!";
+                                message.textContent = `Your total score: ${totalScore}. Thank you for being with us. Keep up the great work on your wellbeing!`;
+                                recommendation.style.backgroundColor = "#f9f9f9"; // Very light gray
+    recommendation.style.color = "#333"; // Text color
+    recommendation.style.padding = "20px"; // Add padding
+    recommendation.style.borderRadius = "8px"; // Rounded corners
+    recommendation.style.border = "1px solid #ddd"; // Optional border
+                        }
 
-            // Show the recommendation section
-            recommendation.style.display = 'block';
-        }
-    </script>
+                        // Show the recommendation section
+                        recommendation.style.display = 'block';
+                }
+        </script>
 </body>
 
 </html>
