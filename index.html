@@ -540,20 +540,18 @@
                         <div class="question">
                                 <p>Do you smoke?</p>
                                 <div class="options">
-                                        <label><input type="radio" name="nutrition4" required>5 Half
-                                                pack+</label>
+                                        <label><input type="radio" name="nutrition4" required>0 yes</label>
                                         <label><input type="radio" name="nutrition4">3 Socially</label>
-                                        <label><input type="radio" name="nutrition4">0 No</label>
+                                        <label><input type="radio" name="nutrition4">5 No</label>
                                 </div>
                         </div>
 
                         <div class="question">
                                 <p>Do you drink alcohol?</p>
                                 <div class="options">
-                                        <label><input type="radio" name="nutrition5" required>5 Almost
-                                                daily</label>
-                                        <label><input type="radio" name="nutrition5">3 Weekly</label>
-                                        <label><input type="radio" name="nutrition5">0 No</label>
+                                        <label><input type="radio" name="nutrition5" required>0 Three times a week</label>
+                                        <label><input type="radio" name="nutrition5">3 Once a week</label>
+                                        <label><input type="radio" name="nutrition5">5 No</label>
                                 </div>
                         </div>
 
@@ -1127,23 +1125,102 @@
                 </div>
 
 
+                <!-- 7. General Physical Health (Optional) -->
+                <div class="section" id="generalPhysicalHealthSection">
+                        <h2>General Physical Health (Optional)</h2>
+
+                        <div class="question">
+                                <p> I feel physically healthy and energized. </p>
+                                <div class="options">
+                                        <label><input type="radio" name="generalPhysicalHealth1" value="1" required
+                                                        onchange="updateSectionScore('generalPhysicalHealthSection', 'generalPhysicalHealthScore')">1
+                                                Never</label>
+                                        <label><input type="radio" name="generalPhysicalHealth1" value="2"
+                                                        onchange="updateSectionScore('generalPhysicalHealthSection', 'generalPhysicalHealthScore')">2
+                                                Rarely</label>
+                                        <label><input type="radio" name="generalPhysicalHealth1" value="3"
+                                                        onchange="updateSectionScore('generalPhysicalHealthSection', 'generalPhysicalHealthScore')">3
+                                                Sometimes</label>
+                                        <label><input type="radio" name="generalPhysicalHealth1" value="4"
+                                                        onchange="updateSectionScore('generalPhysicalHealthSection', 'generalPhysicalHealthScore')">4
+                                                Often</label>
+                                        <label><input type="radio" name="generalPhysicalHealth1" value="5"
+                                                        onchange="updateSectionScore('generalPhysicalHealthSection', 'generalPhysicalHealthScore')">5
+                                                Always</label>
+                                </div>
+                        </div>
+
+                        <div class="question">
+                                <p> I am able to do daily tasks without pain or fatigue.</p>
+                                <div class="options">
+                                        <label><input type="radio" name="generalPhysicalHealth2" value="1"
+                                                        onchange="updateSectionScore('generalPhysicalHealthSection', 'generalPhysicalHealthScore')"
+                                                        required>1 Never</label>
+                                        <label><input type="radio" name="generalPhysicalHealth2" value="2"
+                                                        onchange="updateSectionScore('generalPhysicalHealthSection', 'generalPhysicalHealthScore')">2
+                                                Rarely</label>
+                                        <label><input type="radio" name="generalPhysicalHealth2" value="3"
+                                                        onchange="updateSectionScore('generalPhysicalHealthSection', 'generalPhysicalHealthScore')">3
+                                                Sometimes</label>
+                                        <label><input type="radio" name="generalPhysicalHealth2" value="4"
+                                                        onchange="updateSectionScore('generalPhysicalHealthSection', 'generalPhysicalHealthScore')">4
+                                                Often</label>
+                                        <label><input type="radio" name="generalPhysicalHealth2" value="5"
+                                                        onchange="updateSectionScore('generalPhysicalHealthSection', 'generalPhysicalHealthScore')">5
+                                                Always</label>
+                                </div>
+                        </div>
+
+                        <div class="question">
+                                <p>I feel confident about my current physical health status. </p>
+                                <div class="options">
+                                        <label><input type="radio" name="generalPhysicalHealth3" value="1"
+                                                        onchange="updateSectionScore('generalPhysicalHealthSection', 'generalPhysicalHealthScore')"
+                                                        required>1 Never</label>
+                                        <label><input type="radio" name="generalPhysicalHealth3" value="2"
+                                                        onchange="updateSectionScore('generalPhysicalHealthSection', 'generalPhysicalHealthScore')">2
+                                                Rarely</label>
+                                        <label><input type="radio" name="generalPhysicalHealth3" value="3"
+                                                        onchange="updateSectionScore('generalPhysicalHealthSection', 'generalPhysicalHealthScore')">3
+                                                Sometimes</label>
+                                        <label><input type="radio" name="generalPhysicalHealth3" value="4"
+                                                        onchange="updateSectionScore('generalPhysicalHealthSection', 'generalPhysicalHealthScore')">4
+                                                Often</label>
+                                        <label><input type="radio" name="generalPhysicalHealth3" value="5"
+                                                        onchange="updateSectionScore('generalPhysicalHealthSection', 'generalPhysicalHealthScore')">5
+                                                Always</label>
+                                </div>
+                        </div>
+
+                        <div class="score-section">
+                                <label for="generalPhysicalHealthScore">Your General Physical Health Score (excluding
+                                        sleep hours): </label>
+                                <input type="number" id="generalPhysicalHealthScore" readonly> / 25
+                        </div>
+                </div>
+
                 <!-- Submit Button -->
-                <button type="button" class="submit-button" onclick="calculateFinalScore()">Submit</button>
+                <!-- <button type="button" class="submit-button" onclick="calculateFinalScore()">Submit</button> -->
         </form>
         <!-- Recommendation Section -->
-        <div id="recommendation" class="recommendation">
+        <!-- <div id="recommendation" class="recommendation">
                 <h3 id="recommendationHeading"></h3>
                 <p id="recommendationMessage"></p>
-        </div>
+        </div> -->
 
         <script>
                 // Automatically calculate and update the section score when an option is selected
                 function updateSectionScore(sectionId, scoreInputId) {
                         const section = document.getElementById(sectionId);
+                        const requiredInputs = section.querySelectorAll('input[type="radio"][required]');
+                        const allInputGroups = new Set(Array.from(requiredInputs).map(input => input.name));
+                        const answeredGroups = new Set();
                         const inputs = section.querySelectorAll('input[type="radio"]:checked');
                         let sectionScore = 0;
 
+                        // Count answered questions
                         inputs.forEach(input => {
+                                answeredGroups.add(input.name);
                                 const numericValue = parseInt(input.value, 10);
                                 if (!isNaN(numericValue)) {
                                         sectionScore += numericValue;
@@ -1153,8 +1230,74 @@
                         // Update the section score in the corresponding input field
                         const scoreInput = document.getElementById(scoreInputId);
                         scoreInput.value = sectionScore;
-                }
 
+                        // Get the score section element
+                        const scoreSection = scoreInput.parentElement;
+
+                        // Check if all required questions are answered
+                        const allQuestionsAnswered = allInputGroups.size === answeredGroups.size;
+
+                        // Only show message if all questions are answered
+                        if (allQuestionsAnswered) {
+                                let message = '';
+                                switch (sectionId) {
+                                        case 'movementSection':
+                                                if (sectionScore <= 15) message = "Try a Dhaka Flow yoga class or breath & movement workshop";
+                                                else message = "Excellent! You have a very healthy relationship with movement.";
+                                                break;
+                                        case 'meditationSection':
+                                                if (sectionScore <= 12) message = "Join our guided meditation sessions to help you stay calm and grounded";
+                                                else message = "Excellent mindfulness practices! Keep nurturing this aspect.";
+                                                break;
+
+                                        case 'nutritionSection':
+                                                if (sectionScore <= 15) message = "Book a session with our nutrition coach to make a plan that suits your lifestyle and body.";
+                                                else message = "Excellent! Your nutrition habits are very healthy.";
+                                                break;
+
+                                        case 'mentalWellnessSection':
+                                                if (sectionScore <= 18) message = "Speak with our licensed therapist. Mental wellness is at the heart of your healing.";
+                                                else message = "Excellent mental wellness habits and awareness!";
+                                                break;
+
+                                        case 'relaxationSection':
+                                                if (sectionScore <= 15) message = "Join our sound healing or art therapy sessions. Learn to relax and release stress.";
+                                                else message = "Excellent relaxation practices! Keep maintaining this balance.";
+                                                break;
+
+                                        case 'connectionSection':
+                                                if (sectionScore <= 10) message = "Join a Dhaka Flow retreat or event. You don’t have to walk this journey alone.";
+                                                else message = "Excellent! You maintain healthy social connections.";
+                                                break;
+
+                                        case 'natureSection':
+                                                if (sectionScore <= 15) message = "Come with us on a nature retreat or try forest yoga. Reconnect to Earth, and to your breath.";
+                                                else message = "Excellent! You maintain a strong connection with nature.";
+                                                break;
+                                        case 'generalPhysicalHealthSection':
+                                                message = "If you struggle here: 👉 Reach out to us for a full wellness check-in or a personalized healing path.";
+                                                break;
+                                }
+
+                                // Create or update the message element
+                                let messageElement = scoreSection.querySelector('.section-message');
+                                if (!messageElement) {
+                                        messageElement = document.createElement('p');
+                                        messageElement.className = 'section-message';
+                                        scoreSection.appendChild(messageElement);
+                                }
+                                messageElement.textContent = message;
+                                messageElement.style.marginTop = '10px';
+                                messageElement.style.color = '#666';
+                                messageElement.style.fontStyle = 'italic';
+                        } else {
+                                // Remove message if not all questions are answered
+                                const messageElement = scoreSection.querySelector('.section-message');
+                                if (messageElement) {
+                                        messageElement.remove();
+                                }
+                        }
+                }
                 // Calculate the final score and display the recommendation
                 function calculateFinalScore() {
                         // const allScores = document.querySelectorAll('input[type="number"][readonly]');
@@ -1198,10 +1341,10 @@
                                 heading.textContent = "Thank You!";
                                 message.textContent = `Your total score: ${totalScore}. Thank you for being with us. Keep up the great work on your wellbeing!`;
                                 recommendation.style.backgroundColor = "#f9f9f9"; // Very light gray
-    recommendation.style.color = "#333"; // Text color
-    recommendation.style.padding = "20px"; // Add padding
-    recommendation.style.borderRadius = "8px"; // Rounded corners
-    recommendation.style.border = "1px solid #ddd"; // Optional border
+                                recommendation.style.color = "#333"; // Text color
+                                recommendation.style.padding = "20px"; // Add padding
+                                recommendation.style.borderRadius = "8px"; // Rounded corners
+                                recommendation.style.border = "1px solid #ddd"; // Optional border
                         }
 
                         // Show the recommendation section
