@@ -537,23 +537,7 @@
                                 </div>
                         </div>
 
-                        <div class="question">
-                                <p>Do you smoke?</p>
-                                <div class="options">
-                                        <label><input type="radio" name="nutrition4" required>0 yes</label>
-                                        <label><input type="radio" name="nutrition4">3 Socially</label>
-                                        <label><input type="radio" name="nutrition4">5 No</label>
-                                </div>
-                        </div>
-
-                        <div class="question">
-                                <p>Do you drink alcohol?</p>
-                                <div class="options">
-                                        <label><input type="radio" name="nutrition5" required>0 Three times a week</label>
-                                        <label><input type="radio" name="nutrition5">3 Once a week</label>
-                                        <label><input type="radio" name="nutrition5">5 No</label>
-                                </div>
-                        </div>
+        
 
                         <div class="question">
                                 <p>I understand my personal protein needs and how to meet them through my diet. <span
@@ -618,6 +602,45 @@
                                         <label><input type="radio" name="nutrition8" value="5"
                                                         onchange="updateSectionScore('nutritionSection', 'nutritionScore')">5
                                                 Always</label>
+                                </div>
+                        </div>
+
+                        <div class="question bonus-section">
+                                <h3 style="color: #4ECDC4; margin-top: 20px;">Bonus Questions</h3>
+                                <hr style="border-top: 2px dashed #4ECDC4; margin: 10px 0;">
+
+                                <p>Do you smoke?</p>
+                                <div class="options">
+                                        <label><input type="radio" name="nutrition_bonus1" value="0"
+                                                        onchange="updateSectionScore('nutritionSection', 'nutritionScore')">Yes
+                                                (0
+                                                points)</label>
+                                        <label><input type="radio" name="nutrition_bonus1" value="3"
+                                                        onchange="updateSectionScore('nutritionSection', 'nutritionScore')">Socially
+                                                (3
+                                                points)</label>
+                                        <label><input type="radio" name="nutrition_bonus1" value="5"
+                                                        onchange="updateSectionScore('nutritionSection', 'nutritionScore')">No
+                                                (5
+                                                points)</label>
+                                </div>
+                        </div>
+
+                        <div class="question">
+                                <p>Do you drink alcohol?</p>
+                                <div class="options">
+                                        <label><input type="radio" name="nutrition_bonus2" value="0"
+                                                        onchange="updateSectionScore('nutritionSection', 'nutritionScore')">Three
+                                                times a week
+                                                (0 points)</label>
+                                        <label><input type="radio" name="nutrition_bonus2" value="3"
+                                                        onchange="updateSectionScore('nutritionSection', 'nutritionScore')">Once
+                                                a week (3
+                                                points)</label>
+                                        <label><input type="radio" name="nutrition_bonus2" value="5"
+                                                        onchange="updateSectionScore('nutritionSection', 'nutritionScore')">No
+                                                (5
+                                                points)</label>
                                 </div>
                         </div>
 
@@ -1217,88 +1240,146 @@
                         const answeredGroups = new Set();
                         const inputs = section.querySelectorAll('input[type="radio"]:checked');
                         let sectionScore = 0;
+                        let bonusScore = 0;
 
                         // Count answered questions
                         inputs.forEach(input => {
                                 answeredGroups.add(input.name);
                                 const numericValue = parseInt(input.value, 10);
                                 if (!isNaN(numericValue)) {
-                                        sectionScore += numericValue;
+                                        // Check if this is a bonus question
+                                        if (input.name.includes('nutrition_bonus')) {
+                                                bonusScore += numericValue;
+                                        } else {
+                                                sectionScore += numericValue;
+                                        }
                                 }
                         });
-
-                        // Update the section score in the corresponding input field
+                        // Update the section score display
                         const scoreInput = document.getElementById(scoreInputId);
-                        scoreInput.value = sectionScore;
+                        const totalScore = sectionScore + bonusScore;
+                        scoreInput.value = totalScore;
 
                         // Get the score section element
                         const scoreSection = scoreInput.parentElement;
 
+
+
                         // Check if all required questions are answered
                         const allQuestionsAnswered = allInputGroups.size === answeredGroups.size;
 
-                        // Only show message if all questions are answered
-                        if (allQuestionsAnswered) {
-                                let message = '';
-                                switch (sectionId) {
-                                        case 'movementSection':
-                                                if (sectionScore <= 15) message = "Try a Dhaka Flow yoga class or breath & movement workshop";
-                                                else message = "Excellent! You have a very healthy relationship with movement.";
-                                                break;
-                                        case 'meditationSection':
-                                                if (sectionScore <= 12) message = "Join our guided meditation sessions to help you stay calm and grounded";
-                                                else message = "Excellent mindfulness practices! Keep nurturing this aspect.";
-                                                break;
+                        // Create or update bonus score display
+                        let bonusElement = scoreSection.querySelector('.bonus-score');
+                        if (!bonusElement && bonusScore > 0) {
+                                bonusElement = document.createElement('div');
+                                bonusElement.className = 'bonus-score';
+                                bonusElement.style.marginTop = '10px';
+                                bonusElement.style.color = '#4ECDC4';
+                                bonusElement.innerHTML = `Bonus Score: +${bonusScore} points`;
+                                scoreSection.insertBefore(bonusElement, scoreSection.querySelector('.section-message'));
+                        } else if (bonusElement) {
+                                bonusElement.innerHTML = bonusScore > 0 ? `Bonus Score: +${bonusScore} points` : '';
+                        }
 
+                        // Only show message if all required questions are answered
+                        if (allQuestionsAnswered || (sectionId === 'nutritionSection' && bonusScore > 0)) {
+                                console.log('bosunScore', bonusScore);
+                                const totalScore = sectionScore + bonusScore;
+                                let message = '';
+
+                                // Create or update message display
+                                let messageElement = scoreSection.querySelector('.section-message');
+                                if (!messageElement) {
+                                        messageElement = document.createElement('div');
+                                        messageElement.className = 'section-message';
+                                        messageElement.style.marginTop = '10px';
+                                        messageElement.style.color = '#333';
+                                        scoreSection.appendChild(messageElement);
+                                }
+
+                                // Section-specific messages
+                                switch (sectionId) {
                                         case 'nutritionSection':
-                                                if (sectionScore <= 15) message = "Book a session with our nutrition coach to make a plan that suits your lifestyle and body.";
+                                        console.log('totalScore in side', totalScore);
+
+                                                if (totalScore <= 15) message = "Book a session with our nutrition coach to make a plan that suits your lifestyle and body.";
                                                 else message = "Excellent! Your nutrition habits are very healthy.";
                                                 break;
 
+                                        case 'movementSection':
+                                                if (totalScore <= 15) {
+                                                        message = "Consider joining our movement classes to improve your physical activity level.";
+                                                } else if (totalScore <= 20) {
+                                                        message = "You're doing well! Try adding more variety to your movement routine.";
+                                                } else {
+                                                        message = "Great job staying active! Keep up the excellent work!";
+                                                }
+                                                break;
+
+                                        case 'meditationSection':
+                                                if (totalScore <= 12) {
+                                                        message = "Start with guided meditation sessions to build your practice.";
+                                                } else if (totalScore <= 16) {
+                                                        message = "Your meditation practice is developing well. Consider increasing frequency.";
+                                                } else {
+                                                        message = "Excellent meditation practice! You're maintaining good mental balance.";
+                                                }
+                                                break;
+
                                         case 'mentalWellnessSection':
-                                                if (sectionScore <= 18) message = "Speak with our licensed therapist. Mental wellness is at the heart of your healing.";
-                                                else message = "Excellent mental wellness habits and awareness!";
+                                                if (totalScore <= 18) {
+                                                        message = "Consider speaking with our wellness counselor for additional support.";
+                                                } else if (totalScore <= 25) {
+                                                        message = "You're maintaining good mental health. Keep using your coping strategies.";
+                                                } else {
+                                                        message = "Excellent mental wellness practices! You're doing great at maintaining balance.";
+                                                }
                                                 break;
 
                                         case 'relaxationSection':
-                                                if (sectionScore <= 15) message = "Join our sound healing or art therapy sessions. Learn to relax and release stress.";
-                                                else message = "Excellent relaxation practices! Keep maintaining this balance.";
+                                                if (totalScore <= 15) {
+                                                        message = "Try incorporating more relaxation techniques into your daily routine.";
+                                                } else if (totalScore <= 20) {
+                                                        message = "Good relaxation practices! Consider adding more variety to your routine.";
+                                                } else {
+                                                        message = "Excellent! You're maintaining great relaxation habits.";
+                                                }
                                                 break;
 
                                         case 'connectionSection':
-                                                if (sectionScore <= 10) message = "Join a Dhaka Flow retreat or event. You don’t have to walk this journey alone.";
-                                                else message = "Excellent! You maintain healthy social connections.";
+                                                if (totalScore <= 15) {
+                                                        message = "Consider joining our community events to build more connections.";
+                                                } else if (totalScore <= 20) {
+                                                        message = "You're maintaining good social connections. Keep nurturing them!";
+                                                } else {
+                                                        message = "Excellent! You have strong social connections and support systems.";
+                                                }
                                                 break;
 
                                         case 'natureSection':
-                                                if (sectionScore <= 15) message = "Come with us on a nature retreat or try forest yoga. Reconnect to Earth, and to your breath.";
-                                                else message = "Excellent! You maintain a strong connection with nature.";
+                                                if (totalScore <= 15) {
+                                                        message = "Try spending more time outdoors and connecting with nature.";
+                                                } else if (totalScore <= 20) {
+                                                        message = "Good nature connection! Consider exploring new outdoor activities.";
+                                                } else {
+                                                        message = "Excellent! You maintain a strong connection with nature.";
+                                                }
                                                 break;
+
                                         case 'generalPhysicalHealthSection':
-                                                message = "If you struggle here: 👉 Reach out to us for a full wellness check-in or a personalized healing path.";
+                                                if (totalScore <= 15) {
+                                                        message = "Consider scheduling a wellness check to address your health concerns.";
+                                                } else if (totalScore <= 20) {
+                                                        message = "You're maintaining good physical health. Keep up the healthy habits!";
+                                                } else {
+                                                        message = "Excellent physical health! Your healthy lifestyle is paying off.";
+                                                }
                                                 break;
                                 }
 
-                                // Create or update the message element
-                                let messageElement = scoreSection.querySelector('.section-message');
-                                if (!messageElement) {
-                                        messageElement = document.createElement('p');
-                                        messageElement.className = 'section-message';
-                                        scoreSection.appendChild(messageElement);
-                                }
                                 messageElement.textContent = message;
-                                messageElement.style.marginTop = '10px';
-                                messageElement.style.color = '#666';
-                                messageElement.style.fontStyle = 'italic';
-                        } else {
-                                // Remove message if not all questions are answered
-                                const messageElement = scoreSection.querySelector('.section-message');
-                                if (messageElement) {
-                                        messageElement.remove();
-                                }
                         }
-                }
-                // Calculate the final score and display the recommendation
+                }        // Calculate the final score and display the recommendation
                 function calculateFinalScore() {
                         // const allScores = document.querySelectorAll('input[type="number"][readonly]');
                         // let totalScore = 0;
